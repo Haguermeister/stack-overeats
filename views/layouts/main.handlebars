@@ -19,16 +19,18 @@
   <meta property="og:image" content="" />
   <meta property="og:image:secure_url" content="" />
 
-  <!--Favicons-->
-  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+  <!--icons-->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v1">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <script src="https://kit.fontawesome.com/792e4b63c7.js" crossorigin="anonymous"></script>
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
 
   <!-- CSS -->
   <link rel="stylesheet" href="/css/root.css">
   <link rel="stylesheet" href="/css/local.css">
+  <link rel="stylesheet" href="/css/login.css">
   <link rel="stylesheet" href="/css/dark.css">
   <link rel="stylesheet" href="/css/dark-root-styles.css">
 
@@ -44,10 +46,9 @@
     <!-- Mobile Nav Strip -->
     <div class="mobile-wrapper">
       <div class="mobile-nav container mobile-nav-container">
-        <img class="light" id="mobile-logo" src="/images/logo1.png" alt="mobile_company_logo" width="110" height="32">
-        <img class="dark" id="mobile-logo" src="/images/logo-white.svg" alt="mobile_company_logo" width="110"
-          height="32">
-
+        <img class="light" aria-hidden="true" decoding="async" src="/images/logo.png" alt="compnay logo" height="80">
+        <img class="dark" aria-hidden="true" decoding="async" src="/images/logo-white.png" alt="compnay logo"
+          height="80">
         <!-- Hamburger Menu -->
         <button aria-label="open the menu" id="menu-button" class="hamburger hamburger--spring" onclick="toggleNav()"
           type="button">
@@ -65,18 +66,22 @@
     <nav>
       <div class="navbar-menu">
         <div id="side-menu" class=" side-nav">
-          <a class="nav-logo" href="/index.html">
-            <img class="light" aria-hidden="true" decoding="async" src="/images/logo.svg" alt="compnay logo"
+          <a class="nav-logo" href="">
+            <img class="light" aria-hidden="true" decoding="async" src="/images/logo.png" alt="compnay logo"
               height="80">
-            <img class="dark" aria-hidden="true" decoding="async" src="/images/logo-white.svg" alt="compnay logo"
-              height="80">
-          </a>
+            <img class="dark" aria-hidden="true" decoding="async" src="/images/logo-white.png" alt="compnay logo"
+              height="80"> </a>
           <ul id="on-top" class="navbar-links">
-            <li class="nav-li"><a id="active-menu" href="">Home</a></li>
-            <li class="nav-li"><a class="link" href="">Track</a></li>
-            <li class="nav-li"><a class="link" href="">Calorie Lookup</a></li>
-            <li class="nav-li"><a class="link" href="">History</a></li>
-            <li class="nav-li"><a class="link" href="">Contact</a></li>
+            {{!-- use id="active-menu" instead of class to keep nav highlighted--}}
+            <li class="nav-li"><a class="link" href="/">Home</a></li>
+            <li class="nav-li"><a class="link" href="/Track">Track</a></li>
+            <li class="nav-li"><a class="link" href="/Lookup">Calorie Lookup</a></li>
+            <li class="nav-li"><a class="link" href="/History">History</a></li>
+            {{#if loggedIn}}
+            <li class="nav-li"><a class="link" href="/Logout">Logout</a></li>
+            {{else}}
+            <li class="nav-li"><a class="link" href="/Login">Login</a></li>
+            {{/if}}
           </ul>
         </div>
         <button class="dark-mode-button top-dark-mode-button" aria-label="dark mode toggle">
@@ -89,42 +94,7 @@
 
   <main id="main">
 
-    <!-- ============================================ -->
-    <!--                    LANDING                   -->
-    <!-- ============================================ -->
-
-    {{!-- <section id="hero">
-      <div class="hero-content">
-        <div class="heroText">
-          <h1 id="home-h">Main headline, put top keyword here</h2>
-            <p>
-              Expand on the keyword with more keywords and add a list of related services that you do and
-              include the city, state of your service area.
-            </p>
-            <div class="buttons">
-              <a class="button-solid" href="./about.html">
-                About Us
-              </a>
-              <a class="call-now" href="tel:555-213-9120">
-                <img class="light" decoding="async" src="/images/phone.svg" alt="" aria-hidden="true" width="21"
-                  height="21">
-                <img class="dark" decoding="async" src="/images/phone-dark.svg" alt="" aria-hidden="true" width="21"
-                  height="21">
-                <div class="group">
-                  <span class="text">Call Now</span>
-                  <span class="number">(555) 213-9120</span>
-                </div>
-              </a>
-            </div>
-        </div>
-      </div>
-    </section> --}}
-
-    <!-- ============================================ -->
-    <!--                   About                      -->
-    <!-- ============================================ -->
-
-
+    {{{body}}}
 
   </main>
 
@@ -135,41 +105,37 @@
   <footer id="footer">
     <div class="container">
       <div class="left-section">
-        <a class="logo" href="./index.html"><img loading="lazy" decoding="async" src="./images/logo1.png"
-            alt="logo" width="293" height="91"></a>
+        <a class="logo" href="./index.html">
+          <img class="light" loading="lazy" decoding="async" src="/images/logo.png" alt="logo" width="293" height="91">
+          <img class="dark" loading="lazy" decoding="async" src="/images/logo-white.png" alt="logo" width="293"
+            height="91">
+        </a>
         <p>
-          A mobile based macronutritions tracker.
+          A mobile based macronutritional tracker.
         </p>
       </div>
       <div class="right-section">
         <div class="lists">
           <ul>
             <li>
-              <h2>Stack OverEats</h2>
-            </li>
-          </ul>
-          <ul>
-            <li>
-              <h2>Support</h2>
-            </li>
-          </ul>
-          <ul>
-            <li>
               <h2>Get in Touch</h2>
             </li>
             <li><img loading="lazy" decoding="async" src="/images/pin.svg" alt="" width="24" height="24"><a href=""
-                target="_blank">Richmond, Va</a></li>
+                target="_blank"> Richmond, Va</a></li>
             <li><img loading="lazy" decoding="async" src="/images/footer-phone.svg" alt="" width="24" height="24"><a
-                href="tel:800-426-7428">1 (800) IAM-PHAT (1-800-426-7428)</a></li>
+                href="tel:800-426-7428"> 1 (800) IAM-PHAT (1-800-426-7428)</a></li>
             <li><img loading="lazy" decoding="async" src="/images/email.svg" alt="" width="24" height="24"><a
-                href="mailto:stackovereats@gmail.com">stackovereats@gmail.com</a></li>
+                href="mailto:stackovereats@gmail.com"> stackovereats@gmail.com</a></li>
           </ul>
         </div>
 
         <div class="buttons">
-          <a class="button-solid" href="">
-            Start Tracking
-          </a>
+          {{#if loggedIn}}
+          <a class="button-solid" href="/Track">Get Started</a>
+          {{else}}
+          <a class="button-solid" href="/Login">Get Started</a>
+          {{/if}}
+
         </div>
       </div>
     </div>
