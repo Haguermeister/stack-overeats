@@ -80,5 +80,12 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
+router.get('/track', (req, res) => {
+  if (req.session.loggedIn) {
+    res.render('track');
+    return;
+  }
+  res.render('login')
+});
 
 module.exports = router;

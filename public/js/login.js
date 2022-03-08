@@ -1,3 +1,4 @@
+console.log('JS is working');
 const loginFormHandler = async (event) => {
   event.preventDefault();
 
@@ -12,7 +13,7 @@ const loginFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace('/');
+      document.location.replace('/track');
     } else {
       alert('Failed to log in.');
     }
@@ -20,6 +21,7 @@ const loginFormHandler = async (event) => {
 };
 
 const signupFormHandler = async (event) => {
+  console.log('test: submit');
   event.preventDefault();
 
   const username = document.querySelector('#username-signup').value.trim();
@@ -32,9 +34,8 @@ const signupFormHandler = async (event) => {
       body: JSON.stringify({ username, email, password }),
       headers: { 'Content-Type': 'application/json' },
     });
-
     if (response.ok) {
-      document.location.replace('/');
+      document.location.replace('/track');
     } else {
       alert('Failed to sign up.');
     }
@@ -42,9 +43,9 @@ const signupFormHandler = async (event) => {
 };
 
 document
-  .querySelector('.login-submit')
-  .addEventListener('submit', loginFormHandler);
+  .querySelector('#login-submit')
+  .addEventListener('click', loginFormHandler);
 
 document
-  .querySelector('.signup-submit')
-  .addEventListener('submit', signupFormHandler);
+  .querySelector('#signup-submit')
+  .addEventListener('click', signupFormHandler);

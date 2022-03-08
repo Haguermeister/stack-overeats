@@ -202,9 +202,10 @@
   #form #contact .textarea:hover .hover-box {
     height: 6.75em;
   }
-  #form #contact .form-submit {
+  #form #contact .login-submit, #form #contact .signup-submit {
     margin-left: auto;
   }
+  
 }
 /* Small Desktop */
 @media only screen and (min-width: 64em) {
