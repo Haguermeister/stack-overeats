@@ -44,9 +44,10 @@
     <!-- Mobile Nav Strip -->
     <div class="mobile-wrapper">
       <div class="mobile-nav container mobile-nav-container">
-        <img class="light" id="mobile-logo" src="/images/logo.svg" alt="mobile_company_logo" width="110" height="32">
-        <img class="dark" id="mobile-logo" src="/images/logo-white.svg" alt="mobile_company_logo" width="110"
+        {{!-- <img class="light" id="mobile-logo" src="/images/logo.svg" alt="mobile_company_logo" width="110"
           height="32">
+        <img class="dark" id="mobile-logo" src="/images/logo-white.svg" alt="mobile_company_logo" width="110"
+          height="32"> --}}
 
         <!-- Hamburger Menu -->
         <button aria-label="open the menu" id="menu-button" class="hamburger hamburger--spring" onclick="toggleNav()"
@@ -66,17 +67,17 @@
       <div class="navbar-menu">
         <div id="side-menu" class=" side-nav">
           <a class="nav-logo" href="/index.html">
-            <img class="light" aria-hidden="true" decoding="async" src="/images/logo.svg" alt="compnay logo"
+            {{!-- <img class="light" aria-hidden="true" decoding="async" src="/images/logo.svg" alt="compnay logo"
               height="80">
             <img class="dark" aria-hidden="true" decoding="async" src="/images/logo-white.svg" alt="compnay logo"
               height="80">
-          </a>
+          </a> --}}
           <ul id="on-top" class="navbar-links">
             <li class="nav-li"><a id="active-menu" href="">Home</a></li>
             <li class="nav-li"><a class="link" href="">Track</a></li>
             <li class="nav-li"><a class="link" href="">Calorie Lookup</a></li>
             <li class="nav-li"><a class="link" href="">History</a></li>
-            <li class="nav-li"><a class="link" href="">Contact</a></li>
+            <li class="nav-li"><a class="link" href="">Login</a></li>
           </ul>
         </div>
         <button class="dark-mode-button top-dark-mode-button" aria-label="dark mode toggle">
@@ -123,7 +124,7 @@
     <!-- ============================================ -->
     <!--                   About                      -->
     <!-- ============================================ -->
-
+    {{homepage}}
 
 
   </main>
@@ -135,8 +136,8 @@
   <footer id="footer">
     <div class="container">
       <div class="left-section">
-        <a class="logo" href="./index.html"><img loading="lazy" decoding="async" src="./images/logo-white.svg"
-            alt="logo" width="293" height="91"></a>
+        {{!-- <a class="logo" href="./index.html"><img loading="lazy" decoding="async" src="./images/logo-white.svg"
+            alt="logo" width="293" height="91"></a> --}}
         <p>
           A mobile based macronutritions tracker.
         </p>
@@ -145,24 +146,14 @@
         <div class="lists">
           <ul>
             <li>
-              <h2>Stack OverEats</h2>
-            </li>
-          </ul>
-          <ul>
-            <li>
-              <h2>Support</h2>
-            </li>
-          </ul>
-          <ul>
-            <li>
               <h2>Get in Touch</h2>
             </li>
             <li><img loading="lazy" decoding="async" src="/images/pin.svg" alt="" width="24" height="24"><a href=""
-                target="_blank">Richmond, Va</a></li>
+                target="_blank"> Richmond, Va</a></li>
             <li><img loading="lazy" decoding="async" src="/images/footer-phone.svg" alt="" width="24" height="24"><a
-                href="tel:800-426-7428">1 (800) IAM-PHAT (1-800-426-7428)</a></li>
+                href="tel:800-426-7428"> 1 (800) IAM-PHAT (1-800-426-7428)</a></li>
             <li><img loading="lazy" decoding="async" src="/images/email.svg" alt="" width="24" height="24"><a
-                href="mailto:stackovereats@gmail.com">stackovereats@gmail.com</a></li>
+                href="mailto:stackovereats@gmail.com"> stackovereats@gmail.com</a></li>
           </ul>
         </div>
 
