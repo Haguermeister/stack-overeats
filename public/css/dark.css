@@ -161,7 +161,7 @@
     background: var(--tint);
   }
   body.dark-mode #int-hero {
-    background: url("/images/about-dark.jpg");
+    background: url("/images/banner-dark.jpeg");
     background-size: cover;
     background-position: center 80%;
     background-repeat: no-repeat;

@@ -20,7 +20,7 @@
   <meta property="og:image:secure_url" content="" />
 
   <!--icons-->
-  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v1">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <script src="https://kit.fontawesome.com/792e4b63c7.js" crossorigin="anonymous"></script>
@@ -30,6 +30,7 @@
   <!-- CSS -->
   <link rel="stylesheet" href="/css/root.css">
   <link rel="stylesheet" href="/css/local.css">
+  <link rel="stylesheet" href="/css/login.css">
   <link rel="stylesheet" href="/css/dark.css">
   <link rel="stylesheet" href="/css/dark-root-styles.css">
 
@@ -45,10 +46,9 @@
     <!-- Mobile Nav Strip -->
     <div class="mobile-wrapper">
       <div class="mobile-nav container mobile-nav-container">
-        <img class="light" aria-hidden="true" decoding="async" src="./images/logo.png" alt="compnay logo" height="80">
-        <img class="dark" aria-hidden="true" decoding="async" src="./images/logo-white.png" alt="compnay logo"
+        <img class="light" aria-hidden="true" decoding="async" src="/images/logo.png" alt="compnay logo" height="80">
+        <img class="dark" aria-hidden="true" decoding="async" src="/images/logo-white.png" alt="compnay logo"
           height="80">
-
         <!-- Hamburger Menu -->
         <button aria-label="open the menu" id="menu-button" class="hamburger hamburger--spring" onclick="toggleNav()"
           type="button">
@@ -67,19 +67,20 @@
       <div class="navbar-menu">
         <div id="side-menu" class=" side-nav">
           <a class="nav-logo" href="">
-            <img class="light" aria-hidden="true" decoding="async" src="./images/logo.png" alt="compnay logo"
+            <img class="light" aria-hidden="true" decoding="async" src="/images/logo.png" alt="compnay logo"
               height="80">
-            <img class="dark" aria-hidden="true" decoding="async" src="./images/logo-white.png" alt="compnay logo"
+            <img class="dark" aria-hidden="true" decoding="async" src="/images/logo-white.png" alt="compnay logo"
               height="80"> </a>
           <ul id="on-top" class="navbar-links">
-            <li class="nav-li"><a id="active-menu" href="">Home</a></li>
-            <li class="nav-li"><a class="link" href="">Track</a></li>
-            <li class="nav-li"><a class="link" href="">Calorie Lookup</a></li>
-            <li class="nav-li"><a class="link" href="">History</a></li>
+            {{!-- use id="active-menu" instead of class to keep nav highlighted--}}
+            <li class="nav-li"><a class="link" href="/">Home</a></li>
+            <li class="nav-li"><a class="link" href="/Track">Track</a></li>
+            <li class="nav-li"><a class="link" href="/Lookup">Calorie Lookup</a></li>
+            <li class="nav-li"><a class="link" href="/History">History</a></li>
             {{#if loggedIn}}
-            <li class="nav-li"><a class="link" href="">Logout</a></li>
+            <li class="nav-li"><a class="link" href="/Logout">Logout</a></li>
             {{else}}
-            <li class="nav-li"><a class="link" href="">Login</a></li>
+            <li class="nav-li"><a class="link" href="/Login">Login</a></li>
             {{/if}}
           </ul>
         </div>
@@ -105,8 +106,9 @@
     <div class="container">
       <div class="left-section">
         <a class="logo" href="./index.html">
-          <img loading="lazy" decoding="async" src="/images/logo.png" alt="logo" width="293" height="91">
-
+          <img class="light" loading="lazy" decoding="async" src="/images/logo.png" alt="logo" width="293" height="91">
+          <img class="dark" loading="lazy" decoding="async" src="/images/logo-white.png" alt="logo" width="293"
+            height="91">
         </a>
         <p>
           A mobile based macronutritional tracker.
@@ -128,9 +130,12 @@
         </div>
 
         <div class="buttons">
-          <a class="button-solid" href="">
-            Get Started
-          </a>
+          {{#if loggedIn}}
+          <a class="button-solid" href="/Track">Get Started</a>
+          {{else}}
+          <a class="button-solid" href="/Login">Get Started</a>
+          {{/if}}
+
         </div>
       </div>
     </div>

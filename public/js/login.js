@@ -42,9 +42,9 @@ const signupFormHandler = async (event) => {
 };
 
 document
-  .querySelector('.login-form')
+  .querySelector('.login-submit')
   .addEventListener('submit', loginFormHandler);
 
 document
-  .querySelector('.signup-form')
+  .querySelector('.signup-submit')
   .addEventListener('submit', signupFormHandler);
