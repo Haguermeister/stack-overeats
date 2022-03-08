@@ -389,8 +389,8 @@
   }
   /* Navigation Links */
   .mobile-wrapper img {
-    height: 3.9em;
-    margin-top: 0.25em;
+    height: 3.1em;
+    margin: auto 0;
   }
   .navbar-menu {
     background: #f5f5f5;
@@ -540,7 +540,7 @@
     display: none;
   }
   .navbar-menu .nav-logo img {
-    width: 100%;
+    width: 50%;
     height: auto;
   }
   .navbar-menu .nav-logo img.light {

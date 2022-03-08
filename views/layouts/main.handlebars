@@ -45,7 +45,7 @@
     <!-- Mobile Nav Strip -->
     <div class="mobile-wrapper">
       <div class="mobile-nav container mobile-nav-container">
-        <img class="light" id="mobile-logo" src="/images/logo1.png" alt="mobile_company_logo" width="110" height="32">
+        <img class="light" id="mobile-logo" src="/images/logo.png" alt="mobile_company_logo" width="55" height="16">
         <img class="dark" id="mobile-logo" src="/images/logo-white.svg" alt="mobile_company_logo" width="110"
           height="32">
 
@@ -66,18 +66,20 @@
     <nav>
       <div class="navbar-menu">
         <div id="side-menu" class=" side-nav">
-          <a class="nav-logo" href="/index.html">
-            <ul id="on-top" class="navbar-links">
-              <li class="nav-li"><a id="active-menu" href="">Home</a></li>
-              <li class="nav-li"><a class="link" href="">Track</a></li>
-              <li class="nav-li"><a class="link" href="">Calorie Lookup</a></li>
-              <li class="nav-li"><a class="link" href="">History</a></li>
-              {{#if loggedIn}}
-              <li class="nav-li"><a class="link" href="">Logout</a></li>
-              {{else}}
-              <li class="nav-li"><a class="link" href="">Login</a></li>
-              {{/if}}
-            </ul>
+          <a class="nav-logo" href=""> <img class="light" id="mobile-logo" src="/images/logo.png"
+              alt="mobile_company_logo" width="55" height="16">
+          </a>
+          <ul id="on-top" class="navbar-links">
+            <li class="nav-li"><a id="active-menu" href="">Home</a></li>
+            <li class="nav-li"><a class="link" href="">Track</a></li>
+            <li class="nav-li"><a class="link" href="">Calorie Lookup</a></li>
+            <li class="nav-li"><a class="link" href="">History</a></li>
+            {{#if loggedIn}}
+            <li class="nav-li"><a class="link" href="">Logout</a></li>
+            {{else}}
+            <li class="nav-li"><a class="link" href="">Login</a></li>
+            {{/if}}
+          </ul>
         </div>
         <button class="dark-mode-button top-dark-mode-button" aria-label="dark mode toggle">
           <img class="moon" aria-hidden="true" src="/images/moon.svg" alt="" width="24" height="24">
@@ -100,7 +102,7 @@
   <footer id="footer">
     <div class="container">
       <div class="left-section">
-        <a class="logo" href="./index.html"><img loading="lazy" decoding="async" src="./images/logo1.png" alt="logo"
+        <a class="logo" href="./index.html"><img loading="lazy" decoding="async" src="/images/logo.png" alt="logo"
             width="293" height="91"></a>
         <p>
           A mobile based macronutritional tracker.
