@@ -45,9 +45,9 @@
     <!-- Mobile Nav Strip -->
     <div class="mobile-wrapper">
       <div class="mobile-nav container mobile-nav-container">
-        <img class="light" id="mobile-logo" src="/images/logo.png" alt="mobile_company_logo" width="55" height="16">
-        <img class="dark" id="mobile-logo" src="/images/logo-white.svg" alt="mobile_company_logo" width="110"
-          height="32">
+        <img class="light" aria-hidden="true" decoding="async" src="./images/logo.png" alt="compnay logo" height="80">
+        <img class="dark" aria-hidden="true" decoding="async" src="./images/logo-white.png" alt="compnay logo"
+          height="80">
 
         <!-- Hamburger Menu -->
         <button aria-label="open the menu" id="menu-button" class="hamburger hamburger--spring" onclick="toggleNav()"
@@ -66,9 +66,11 @@
     <nav>
       <div class="navbar-menu">
         <div id="side-menu" class=" side-nav">
-          <a class="nav-logo" href=""> <img class="light" id="mobile-logo" src="/images/logo.png"
-              alt="mobile_company_logo" width="55" height="16">
-          </a>
+          <a class="nav-logo" href="">
+            <img class="light" aria-hidden="true" decoding="async" src="./images/logo.png" alt="compnay logo"
+              height="80">
+            <img class="dark" aria-hidden="true" decoding="async" src="./images/logo-white.png" alt="compnay logo"
+              height="80"> </a>
           <ul id="on-top" class="navbar-links">
             <li class="nav-li"><a id="active-menu" href="">Home</a></li>
             <li class="nav-li"><a class="link" href="">Track</a></li>
@@ -102,8 +104,10 @@
   <footer id="footer">
     <div class="container">
       <div class="left-section">
-        <a class="logo" href="./index.html"><img loading="lazy" decoding="async" src="/images/logo.png" alt="logo"
-            width="293" height="91"></a>
+        <a class="logo" href="./index.html">
+          <img loading="lazy" decoding="async" src="/images/logo.png" alt="logo" width="293" height="91">
+
+        </a>
         <p>
           A mobile based macronutritional tracker.
         </p>
