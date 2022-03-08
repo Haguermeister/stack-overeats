@@ -208,6 +208,9 @@
   body.dark-mode #reviews .name {
     color: #fff;
   }
+  body.dark-mode #form #contact .input-group input{
+    color: #fff;
+  }
 }
 /* Desktop */
 @media screen and (min-width: 1024px) {
