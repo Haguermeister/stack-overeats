@@ -19,10 +19,11 @@
   <meta property="og:image" content="" />
   <meta property="og:image:secure_url" content="" />
 
-  <!--Favicons-->
+  <!--icons-->
   <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v1">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <script src="https://kit.fontawesome.com/792e4b63c7.js" crossorigin="anonymous"></script>
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
 
@@ -47,8 +48,6 @@
         <img class="light" id="mobile-logo" src="/images/logo1.png" alt="mobile_company_logo" width="110" height="32">
         <img class="dark" id="mobile-logo" src="/images/logo-white.svg" alt="mobile_company_logo" width="110"
           height="32">
-        <img class="dark" id="mobile-logo" src="/images/logo-white.svg" alt="mobile_company_logo" width="110"
-          height="32"> --}}
 
         <!-- Hamburger Menu -->
         <button aria-label="open the menu" id="menu-button" class="hamburger hamburger--spring" onclick="toggleNav()"
@@ -68,18 +67,17 @@
       <div class="navbar-menu">
         <div id="side-menu" class=" side-nav">
           <a class="nav-logo" href="/index.html">
-            {{!-- <img class="light" aria-hidden="true" decoding="async" src="/images/logo.svg" alt="compnay logo"
-              height="80">
-            <img class="dark" aria-hidden="true" decoding="async" src="/images/logo-white.svg" alt="compnay logo"
-              height="80">
-          </a> --}}
-          <ul id="on-top" class="navbar-links">
-            <li class="nav-li"><a id="active-menu" href="">Home</a></li>
-            <li class="nav-li"><a class="link" href="">Track</a></li>
-            <li class="nav-li"><a class="link" href="">Calorie Lookup</a></li>
-            <li class="nav-li"><a class="link" href="">History</a></li>
-            <li class="nav-li"><a class="link" href="">Login</a></li>
-          </ul>
+            <ul id="on-top" class="navbar-links">
+              <li class="nav-li"><a id="active-menu" href="">Home</a></li>
+              <li class="nav-li"><a class="link" href="">Track</a></li>
+              <li class="nav-li"><a class="link" href="">Calorie Lookup</a></li>
+              <li class="nav-li"><a class="link" href="">History</a></li>
+              {{#if loggedIn}}
+              <li class="nav-li"><a class="link" href="">Logout</a></li>
+              {{else}}
+              <li class="nav-li"><a class="link" href="">Login</a></li>
+              {{/if}}
+            </ul>
         </div>
         <button class="dark-mode-button top-dark-mode-button" aria-label="dark mode toggle">
           <img class="moon" aria-hidden="true" src="/images/moon.svg" alt="" width="24" height="24">
@@ -91,42 +89,7 @@
 
   <main id="main">
 
-    <!-- ============================================ -->
-    <!--                    LANDING                   -->
-    <!-- ============================================ -->
-
-    {{!-- <section id="hero">
-      <div class="hero-content">
-        <div class="heroText">
-          <h1 id="home-h">Main headline, put top keyword here</h2>
-            <p>
-              Expand on the keyword with more keywords and add a list of related services that you do and
-              include the city, state of your service area.
-            </p>
-            <div class="buttons">
-              <a class="button-solid" href="./about.html">
-                About Us
-              </a>
-              <a class="call-now" href="tel:555-213-9120">
-                <img class="light" decoding="async" src="/images/phone.svg" alt="" aria-hidden="true" width="21"
-                  height="21">
-                <img class="dark" decoding="async" src="/images/phone-dark.svg" alt="" aria-hidden="true" width="21"
-                  height="21">
-                <div class="group">
-                  <span class="text">Call Now</span>
-                  <span class="number">(555) 213-9120</span>
-                </div>
-              </a>
-            </div>
-        </div>
-      </div>
-    </section> --}}
-
-    <!-- ============================================ -->
-    <!--                   About                      -->
-    <!-- ============================================ -->
-    {{homepage}}
-
+    {{{body}}}
 
   </main>
 
@@ -140,7 +103,7 @@
         <a class="logo" href="./index.html"><img loading="lazy" decoding="async" src="./images/logo1.png" alt="logo"
             width="293" height="91"></a>
         <p>
-          A mobile based macronutritions tracker.
+          A mobile based macronutritional tracker.
         </p>
       </div>
       <div class="right-section">
@@ -160,7 +123,7 @@
 
         <div class="buttons">
           <a class="button-solid" href="">
-            Start Tracking
+            Get Started
           </a>
         </div>
       </div>
