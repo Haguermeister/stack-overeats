@@ -20,7 +20,6 @@ router.get('/', async (req, res) => {
     );
 
     res.render('homepage', {
-      galleries,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
@@ -77,15 +76,27 @@ router.get('/login', (req, res) => {
     res.redirect('/');
     return;
   }
-
   res.render('login');
 });
-router.get('/track', (req, res) => {
-  if (req.session.loggedIn) {
-    res.render('track');
-    return;
-  }
-  res.render('login')
+router.get('/logout', (req, res) => {
+  res.redirect('/');
 });
-
+router.get('/track', withAuth, (req, res) => {
+  res.render('track', {
+    loggedIn: req.session.loggedIn,
+  });
+  return;
+});
+router.get('/lookup', withAuth, (req, res) => {
+  res.render('lookup', {
+    loggedIn: req.session.loggedIn,
+  });
+  return;
+});
+router.get('/history', withAuth, (req, res) => {
+  res.render('history', {
+    loggedIn: req.session.loggedIn,
+  });
+  return;
+});
 module.exports = router;
