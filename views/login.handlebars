@@ -1,40 +1,51 @@
-<div class="row justify-space-between-md">
-  <div class="login-card">
-    <h2 class="page-title">Login</h2>
-    <form class="form login-form">
-      <div class="form-group">
-        <label for="email-login">Email:</label>
-        <input class="form-input" type="text" id="email-login" />
+<section id="int-hero">
+  <h1 id="home-h">Login / Signup</h2>
+</section>
+<section id="form">
+  <div class="left-section">
+    <h2>Login</h2>
+    <form id="contact" name="Contact Form" method="post" data-netlify-recaptcha="true" data-netlify="true">
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input id="email-login" aria-label="email" class="input1" name="email" placeholder="Bob@email.com" type="email"
+          tabindex="1" required>
+        <div aria-hidden="true" class="hover-box"></div>
       </div>
-      <div class="form-group">
-        <label for="password-login">Password:</label>
-        <input class="form-input" type="password" id="password-login" />
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input id="password-login" aria-label="password" class="input1" name="password" placeholder="Password"
+          type="text" tabindex="2" required>
+        <div aria-hidden="true" class="hover-box"></div>
       </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">login</button>
+      <p class="login-submit">
+        <button name="submit" id="login-submit" class="button-solid">Submit</button>
+      </p>
+    </form>
+    <h2>Signup</h2>
+    <form id="contact" name="Contact Form" method="post" data-netlify-recaptcha="true" data-netlify="true">
+      <div class="input-group">
+        <label for="username-signup">Username</label>
+        <input id="username-signup" aria-label="username" class="input1" name="username" placeholder="Fitboy123"
+          type="text" tabindex="1" required>
+        <div aria-hidden="true" class="hover-box"></div>
       </div>
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input id="email-signup" aria-label="email" class="input1" name="email" placeholder="Bob@email.com" type="email"
+          tabindex="2" required>
+        <div aria-hidden="true" class="hover-box"></div>
+      </div>
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input id="password-signup" aria-label="password" class="input1" name="password" placeholder="Password"
+          type="text" tabindex="2" required>
+        <div aria-hidden="true" class="hover-box"></div>
+      </div>
+      <p class="signup-submit">
+        <button name="submit" id="signup-submit" class="button-solid">Submit</button>
+      </p>
     </form>
   </div>
-  <div class="login-card">
-    <h2 class="page-title">Signup</h2>
-    <form class="form signup-form">
-      <div class="form-group">
-        <label for="username-signup">Username:</label>
-        <input class="form-input" type="text" id="username-signup" />
-      </div>
-      <div class="form-group">
-        <label for="email-signup">Email:</label>
-        <input class="form-input" type="text" id="email-signup" />
-      </div>
-      <div class="form-group">
-        <label for="password-signup">Password:</label>
-        <input class="form-input" type="password" id="password-signup" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">signup</button>
-      </div>
-    </form>
-  </div>
-</div>
 
-<script src="./js/login.js"></script>
+
+  <script src="/js/login.js"></script>

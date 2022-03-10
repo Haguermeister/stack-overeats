@@ -1,0 +1,337 @@
+/*-- -------------------------- -->
+<---          Landing           -->
+<--- -------------------------- -*/
+/* Mobile */
+@media only screen and (min-width: 0em) {
+  
+  #hero {
+    font-size: inherit;
+    padding-bottom: 13.5em;
+    padding-top: 5em;
+    position: relative;
+    z-index: 1;
+    background: url("/images/landingmobile.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  #hero:before {
+    content: '';
+    position: absolute;
+    display: block;
+    height: 100%;
+    width: 100%;
+    background: #ECEFFE;
+    opacity: .9;
+    top: 0;
+    left: 0;
+    z-index: -10;
+  }
+  #hero .hero-content {
+    width: 96%;
+    max-width: 57.2em;
+    margin: auto;
+    position: relative;
+    z-index: 10;
+  }
+  #hero .hero-content {
+    padding: 0;
+  }
+  #hero .heroText {
+    width: 100%;
+    max-width: 28.9em;
+  }
+  #hero h1 {
+    font-weight: bold;
+    font-size: 2.8em;
+    color: #000000;
+    line-height: 1.17857143;
+    margin-bottom: 0.41071429em;
+  }
+  #hero p {
+    font-size: 0.9em;
+    line-height: 1.5;
+    margin-bottom: 1.33333333em;
+    color: #595959;
+  }
+  #hero .buttons {
+    display: flex;
+    justify-content: flex-start;
+  }
+  #hero .button-solid {
+    margin: 0;
+    margin-right: 2.88888889em;
+    height: 2.94444444em;
+    padding-top: 0.16666667em;
+  }
+  #hero .avatar {
+    height: 2.94444444em;
+    width: 9.11111111em;
+    font-size: 0.9em;
+    display: inline-block;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    margin: 0;
+  }
+  #hero .avatar img {
+    display: inline-block;
+    width: 1.16666667em;
+    height: 1.16666667em;
+  }
+  #hero .avatar .dark {
+    display: none;
+  }
+  #hero .avatar span {
+    display: block;
+  }
+  #hero .avatar .text {
+    font-size: 0.6em;
+    line-height: 1.16666667;
+    text-transform: uppercase;
+    margin-bottom: 0.5em;
+  }
+  #hero .avatar .number {
+    font-weight: bold;
+    line-height: 1.16666667;
+    font-size: 1em;
+  }
+}
+/* Tablet */
+@media only screen and (min-width: 48em) {
+  #hero {
+    padding: 6.15em 0 11.45em 0;
+    z-index: 1;
+    overflow: hidden;
+    background: url("/images/landing.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  #hero .hero-content {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+  }
+  
+}
+/* Desktop */
+@media only screen and (min-width: 64em) {
+  #hero {
+    padding-top: 15em;
+    padding-bottom: 14em;
+    background-attachment: fixed;
+  }
+  
+}
+/*-- -------------------------- -->
+<---          Services          -->
+<--- -------------------------- -*/
+/* Mobile */
+@media only screen and (min-width: 0em) {
+  #services {
+    padding-top: 0;
+    margin-top: -6em;
+    display: flex;
+    flex-direction: column-reverse;
+    z-index: 100;
+    position: relative;
+  }
+  #services .service {
+    background: #0e817c;
+    padding: 2.1em;
+    width: 90%;
+    margin: auto;
+  }
+  
+  #services .service:nth-of-type(2) {
+    border-bottom: 0.05em solid rgba(73, 181, 176, 0.5);
+  }
+  #services .service:nth-of-type(2) {
+    background: #10625e;
+    width: 100%;
+    box-shadow: rgba(100, 100, 111, 0.4) 0px 7px 29px 0px;
+    order: 1;
+    margin-bottom: 0;
+  }
+  #services .service:nth-of-type(2) .button-solid {
+    color: #10625e;
+  }
+  #services .service:nth-of-type(2) .button-solid:before {
+    background: var(--primary);
+  }
+  #services .service:nth-of-type(2) .button-solid:hover {
+    color: #fff;
+  }
+  #services .service h2 {
+    color: #fff;
+    font-size: 1.2em;
+    line-height: 1.16666667;
+    margin-bottom: 0.625em;
+    text-align: center;
+    font-weight: 900;
+  }
+  
+  #services .service h2 span {
+    display: block;
+    color: #fff;
+  }
+  #services .service p {
+    color: #fff;
+    font-size: 0.9em;
+    line-height: 1.5;
+    text-align: left;
+    margin-bottom: 1.66666667em;
+    opacity: 1;
+  }
+  #services .service .button-solid {
+    background: #fff;
+    color: #10625e;
+    display: block;
+    margin: 0 auto ;
+  }
+  #services .service .button-solid:hover {
+    color: #fff;
+  }
+}
+/* Large Phone */
+@media only screen and (min-width: 600px) and (max-width: 790px) {
+  #services {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #services .service:nth-of-type(1) {
+    border-right: 0.05em solid rgba(255, 255, 255, 0.05);
+  }
+  #services .service:nth-of-type(1),
+  #services .service:nth-of-type(3) {
+    width: 50%;
+    border-radius: 0;
+  }
+  #services .service:nth-of-type(2) {
+    order: -1;
+  }
+  #services .service:nth-of-type(2) h2,
+  #services .service:nth-of-type(2) p {
+    text-align: center;
+    max-width: 20em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #services .service:nth-of-type(2) .button-solid {
+    margin: auto;
+    display: block;
+  }
+}
+/* Tablet */
+@media only screen and (min-width: 791px) {
+  #services {
+    flex-direction: row;
+    align-items: flex-end;
+    width: 96%;
+    max-width: 57.2em;
+    margin: auto;
+    margin-top: -6.5em;
+    position: relative;
+    z-index: 100;
+    padding: 0;
+  }
+  #services .service {
+    margin: 0;
+    width: 18.6em;
+    height: auto;
+    border-radius: 0.25em 0.25em 0 0;
+  }
+  #services .service:nth-of-type(2) {
+    order: initial;
+    width: 20em;
+    height: 17.25em;
+    border: none;
+  }
+  #services .service:last-of-type {
+    border-radius: 0.25em 0.25em 0 0;
+  }
+}
+/* Desktop */
+@media only screen and (min-width: 64em) {
+  #services .service:nth-of-type(2) {
+    box-shadow: none;
+  }
+}
+/*-- -------------------------- -->
+<---           Avatar          -->
+<--- -------------------------- -*/
+/* Mobile */
+/* Tablet */
+/* Desktop */
+
+/*.container,
+.head,
+.shoulder,
+.hand,
+.leg,
+.bod {
+  position: absolute;
+}
+
+.container {
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 50px;
+  height: 350px;
+}
+
+.head {
+  width: 50px;
+  height: 50px;
+  background: #545775;
+  border-radius: 100%;
+}
+
+.shoulder {
+  top: 55px;
+  left: -40px;
+  width: 130px;
+  height: 40px;
+  background: #545775;
+  border-radius: 100px 100px 0 0;
+}
+
+.hand, .leg {
+  width: 25px;
+  height: 100px;
+  background: #545775;
+  border-radius: 100px;
+  top: 80px;
+  left: -40px;
+}
+
+.hand.right, .right.leg {
+  left: 65px;
+}
+
+.bod {
+  width: 70px;
+  height: 120px;
+  background: #545775;
+  top: 70px;
+  left: -10px;
+}
+
+.leg {
+  height: 130px;
+  width: 25px;
+  top: 176px;
+  left: -10px;
+}
+
+.leg.right {
+  left: 35px;
+}*/
