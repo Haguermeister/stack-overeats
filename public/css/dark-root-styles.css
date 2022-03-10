@@ -134,6 +134,9 @@
     opacity: 1;
     z-index: 1;
   }
+  body.dark-mode .navbar-menu .dark{
+    display: none;
+  }
   body.dark-mode .light {
     display: none;
   }
@@ -168,7 +171,7 @@
     background: var(--dark);
   }
 }
-@media only screen and (max-width: 1023px) {
+@media only screen and (max-width: 991px) {
   .dark-mode-button {
     font-size: inherit;
   }
