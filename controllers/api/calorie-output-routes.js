@@ -14,7 +14,8 @@ router.post('/', (req, res) => {
     CalorieOutput.create({
       date_text: req.body.date_text,
       time_spent_text: req.body.time_spent_text,
-      exercise_type_text: req.body.exercise_type_text
+      exercise_type_text: req.body.exercise_type_text,
+      calories_burnt_text: req.body.calories_burnt_text
     })
       .then(calorieOutputData => res.json(calorieOutputData))
       .catch(err => {
@@ -23,7 +24,26 @@ router.post('/', (req, res) => {
       });
   });
 
-  //router.put
+  router.put('/:id', (req, res) => {
+    CalorieOutput.update({
+      date_text: req.body.date_text,
+      time_spent_text: req.body.time_spent_text,
+      exercise_type_text: req.body.exercise_type_text,
+      calories_burnt_text: req.body.calories_burnt_text
+    },
+
+    {
+    where: {
+      id: req.params.id
+    }
+
+  })
+  .then(calorieOutputData => res.json(calorieOutputData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+  });
   
   router.delete('/:id', (req, res) => {
     CalorieOutput.destroy({
