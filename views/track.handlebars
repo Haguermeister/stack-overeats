@@ -1,23 +1,52 @@
 <section id="int-hero">
     <h1 id="home-h">Nutrional and Exercise Tracking</h2>
 </section>
-<div class="track-div">
-    <h2>
-        Food Consumed
-    </h2>
-    <form autocomplete="off">
-        <div class="autocomplete">
-            <input id="foodInput" type="text" name="foodConsumed" placeholder="Banana">
+<div class="d-flex flex-wrap">
+    <div class="track-div col-lg-8 col-12 d-flex">
+        <div class="col-3">
+            <h2>
+                Input Food Type and Quantity Consumed
+            </h2>
+            <form autocomplete="off">
+                <div class="autocomplete d-flex justify-content-around">
+                    <input class="col-8" id="foodInput" type="text" name="foodConsumed" placeholder="Banana">
+                    <select class='col-3' name="quantity" id="quantitySelect">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+                <button type="submit" id="food-submit" class="button-solid">Submit</button>
+            </form>
         </div>
-        <button type="submit" id="food-submit" class="button-solid">Submit</button>
-    </form>
-    <h2>
-        Calories Consumed
-    </h2>
-    <form autocomplete="off">
-        <div>
-            <input id="caloriesInput" type="text" name="colriesBurnt" placeholder="2000">
+        <div class="chart-wrap col-9 d-flex justify-content-center">
+            <div class="col-4">
+
+                <canvas id="calorieProgress"></canvas>
+            </div>
+            <div class="col-4">
+                <canvas id="protienProgress"></canvas>
+            </div>
+            <div class="col-4">
+                <canvas id="carbProgress"></canvas>
+            </div>
         </div>
-        <button type="submit" id="food-submit" class="button-solid">Submit</button>
-    </form>
+    </div>
+    <div class="track-div col-lg-4 col-12 d-flex">
+        <div class="col-6">
+            <h2>
+                Input Calories Burnt
+            </h2>
+            <form autocomplete="off">
+                <div>
+                    <input id="caloriesInput" type="text" name="colriesBurnt" placeholder="2000">
+                </div>
+                <button type="submit" id="food-submit" class="button-solid">Submit</button>
+            </form>
+        </div>
+        <div class="col-6">
+            <canvas id="calorieGoal"></canvas>
+        </div>
+    </div>
 </div>

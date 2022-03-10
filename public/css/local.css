@@ -1,9 +1,6 @@
 /*-- -------------------------- -->
 <---          Landing           -->
 <--- -------------------------- -*/
-main {
-  min-height: 50em;
-}
 /* Mobile */
 @media only screen and (min-width: 0em) {
   

@@ -1,19 +1,6 @@
 /* Pages */
 @media screen and (min-width: 0px) {
-  body.dark-mode {
-    /*-- -------------------------- -->
-        <---           Home             -->
-        <--- -------------------------- -*/
-    /*-- -------------------------- -->
-        <---           About            -->
-        <--- -------------------------- -*/
-    /*-- -------------------------- -->
-        <---          Contact           -->
-        <--- -------------------------- -*/
-    /*-- -------------------------- -->
-        <---        Testimonials        -->
-        <--- -------------------------- -*/
-  }
+  
   body.dark-mode #hero {
     position: relative;
   }
@@ -211,6 +198,7 @@
   body.dark-mode #form #contact .input-group input{
     color: #fff;
   }
+  
 }
 /* Desktop */
 @media screen and (min-width: 1024px) {
