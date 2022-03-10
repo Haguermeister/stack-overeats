@@ -28,11 +28,16 @@
   <meta name="theme-color" content="#ffffff">
 
   <!-- CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="/css/root.css">
   <link rel="stylesheet" href="/css/local.css">
   <link rel="stylesheet" href="/css/login.css">
   <link rel="stylesheet" href="/css/dark.css">
   <link rel="stylesheet" href="/css/dark-root-styles.css">
+  <link rel="stylesheet" href="/css/track.css">
+
+
 
   <title>Macronutrients Tracker | Stack OverEats | Richmond, Va</title>
 </head>
@@ -66,11 +71,12 @@
     <nav>
       <div class="navbar-menu">
         <div id="side-menu" class=" side-nav">
-          <a class="nav-logo" href="">
+          <a class="nav-logo" href="/">
             <img class="light" aria-hidden="true" decoding="async" src="/images/logo.png" alt="compnay logo"
               height="80">
             <img class="dark" aria-hidden="true" decoding="async" src="/images/logo-white.png" alt="compnay logo"
-              height="80"> </a>
+              height="80">
+          </a>
           <ul id="on-top" class="navbar-links">
             {{!-- use id="active-menu" instead of class to keep nav highlighted--}}
             <li class="nav-li"><a class="link" href="/">Home</a></li>
@@ -160,6 +166,9 @@
   {{#if loggedIn}}
   <script src="/js/logout.js"></script>
   {{/if}}
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/js/chart.js"></script>
+
 </body>
 
 </html>

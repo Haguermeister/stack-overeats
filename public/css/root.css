@@ -447,6 +447,7 @@
     border-right: 0.2em solid var(--primary);
     color: var(--primary);
   }
+
 }
 /* Ipad Pro */
 @media screen and (min-width: 450px) and (max-width: 991px) {
@@ -468,7 +469,7 @@
   }
 }
 /* Small Desktop */
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 992px) {
   .mobile-nav {
     max-width: 100%;
   }

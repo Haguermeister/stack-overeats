@@ -17,6 +17,13 @@
   body.dark-mode #hero {
     position: relative;
   }
+  .navbar-menu .nav-logo img.dark {
+    display: block;
+  }
+  .navbar-menu .nav-logo img {
+    width: 50%;
+    height: auto;
+  }
   body.dark-mode #hero:before {
     content: '';
     position: absolute;
