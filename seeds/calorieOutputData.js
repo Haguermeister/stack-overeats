@@ -1,6 +1,6 @@
 const { CalorieOutput } = require('../models');
 
-const calorieoutputdata = [
+const calorieoutputData = [
   {
     date: 'April 20, 2021 07:00:00',
     time_spent: '30 minutes',
@@ -26,6 +26,6 @@ const calorieoutputdata = [
   },
 ];
 
-const seedCalorieOutput = () => CalorieOutput.bulkCreate(calorieoutputdata);
+const seedCalorieOutput = () => CalorieOutput.bulkCreate(calorieoutputData);
 
 module.exports = seedCalorieOutput;
