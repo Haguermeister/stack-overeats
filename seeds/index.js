@@ -1,13 +1,13 @@
 const sequelize = require('../config/connection');
-const seedCalorieOutput = require('./calorieOutputData');
-const seedCalorieIntake = require('./calorieIntakeData');
+const seedCaloriesBurned = require('./caloriesBurnedData');
+const seedCaloriesConsumed = require('./caloriesConsumedData');
 
 const seedAll = async () => {
   await sequelize.sync({ force: true });
 
-  await seedCalorieOutput();
+  await seedCaloriesBurned();
 
-  await seedCalorieIntake();
+  await seedCaloriesConsumed();
 
   process.exit(0);
 };
