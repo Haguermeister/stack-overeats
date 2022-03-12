@@ -18,7 +18,17 @@ function getCurrent() {
 
 new Chart(document.getElementById('calorieProgress'), {
     type: 'doughnut',
-    data: data,
+    data: {
+        datasets: [{
+            borderColor: "rgba(0,255,255,.75)",
+            pointBorderColor: "#fff",
+            data: [caloriesConsumedCurrent, calorieConsumedGoal - caloriesConsumedCurrent],
+            backgroundColor: [
+                '#13726d',
+                '#42e4dc'],
+            hoverOffset: 4
+        }]
+    },
     options: {
         responsive: true,
         plugins: {
@@ -38,51 +48,6 @@ new Chart(document.getElementById('calorieProgress'), {
         }
     }
 });
-new Chart(document.getElementById('protienProgress'), {
-    type: 'doughnut',
-    data: data,
-    options: {
-        responsive: true,
-        plugins: {
-            title: {
-                display: true,
-                color: "#fff",
-                font: function (context) {
-                    var width = context.chart.width;
-                    var size = Math.round(width / 9);
-                    return {
-                        size: size,
-                        weight: 600
-                    };
-                },
-                text: 'Protien Consumption'
-            }
-        }
-    }
-});
-new Chart(document.getElementById('carbProgress'), {
-    type: 'doughnut',
-    data: data,
-    options: {
-        responsive: true,
-        plugins: {
-            title: {
-                display: true,
-                color: "#fff",
-                font: function (context) {
-                    var width = context.chart.width;
-                    var size = Math.round(width / 9);
-                    return {
-                        size: size,
-                        weight: 600
-                    };
-                },
-                text: 'Carb Consumption'
-            }
-        },
-
-    }
-});
 new Chart(document.getElementById('calorieGoal'), {
     type: 'doughnut',
     data:
@@ -90,7 +55,7 @@ new Chart(document.getElementById('calorieGoal'), {
         datasets: [{
             borderColor: "rgba(0,255,255,.75)",
             pointBorderColor: "#fff",
-            data: [caloriesBurnedCurrent, calorieGoal - caloriesBurnedCurrent],
+            data: [caloriesBurnedCurrent, calorieBurnedGoal - caloriesBurnedCurrent],
             backgroundColor: [
                 '#13726d',
                 '#42e4dc'],
