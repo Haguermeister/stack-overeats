@@ -23,19 +23,25 @@ CaloriesConsumed.init(
     // },
 
     user_id: {
+      primaryKey: true,
+      allowNull: false,
       type: DataTypes.INTEGER,
       references: {
         model: 'user',
         key: 'id'
-      },
+    }},
 
     amount: {
       type: DataTypes.INTEGER,
       allowNull: false,
-    }
-  }
-},
-  
+    },
+
+      goal: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      }
+    },
+     
 {
   sequelize,
   timestamps: false,

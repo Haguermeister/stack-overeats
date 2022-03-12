@@ -19,7 +19,8 @@ router.post('/', (req, res) => {
       // date_text: req.body.date_text,
       // meal_type_text: req.body.meal_type_text,
       user_id: req.session.user_id,
-      amount: req.body.amount
+      amount: req.body.amount,
+      goal: req.body.goal
     })
       .then(caloriesConsumedData => res.json(caloriesConsumedData))
       .catch(err => {
@@ -33,7 +34,8 @@ router.post('/', (req, res) => {
       // date_text: req.body.date_text,
       // meal_type_text: req.body.meal_type_text,
       user_id: req.session.user_id,
-      amount: req.body.amount
+      amount: req.body.amount,
+      goal: req.body.goal
     },
 
     {
