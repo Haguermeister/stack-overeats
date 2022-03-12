@@ -137,7 +137,6 @@ async function caloriesBurnedSubmitHandler(event) {
     else {
         alert('Please input an interger into the input');
     }
-
     const response = await fetch('/api/calories-burned-routes', {
         method: "PUT",
         body: JSON.stringify({
