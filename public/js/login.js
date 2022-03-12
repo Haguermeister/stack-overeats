@@ -1,4 +1,3 @@
-console.log('JS is working');
 const loginFormHandler = async (event) => {
   event.preventDefault();
 
@@ -13,6 +12,9 @@ const loginFormHandler = async (event) => {
     });
 
     if (response.ok) {
+      //      document.location.replace('/track');
+      const userId = (await response.json()).user.id
+      localStorage.setItem("userId", userId);
       document.location.replace('/track');
     } else {
       alert('Failed to log in.');
@@ -35,6 +37,8 @@ const signupFormHandler = async (event) => {
       headers: { 'Content-Type': 'application/json' },
     });
     if (response.ok) {
+      const userId = (await response.json()).user.id
+      localStorage.setItem("userId", userId);
       document.location.replace('/track');
     } else {
       alert('Failed to sign up.');
