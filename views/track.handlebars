@@ -1,15 +1,15 @@
 <section id="int-hero">
-    <h1 id="home-h">Nutrional and Exercise Tracking</h2>
+    <h1 id="home-h">Calorie and Exercise Tracking</h2>
 </section>
 <div class="d-flex flex-wrap">
-    <div class="track-div col-lg-8 col-12 d-flex">
+    <div class="track-div col-lg-6 col-12 d-flex">
         <div class="col-6">
             <h2>
-                Input Food Type and Quantity Consumed
+                Input Calories Consumed
             </h2>
             <form autocomplete="off">
-                <div class="autocomplete d-flex justify-content-around">
-                    <input class="col-8" id="foodInput" type="text" name="foodConsumed" placeholder="Banana">
+                <div class="autocomplete d-flex ">{{!justify-content-around}}
+                    <input id="foodInput" type="text" name="foodConsumed" placeholder="400">{{!class="col-8"}}
                     {{!-- <select class='col-3' name="quantity" id="quantitySelect">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -34,10 +34,10 @@
             </div> --}}
         </div>
     </div>
-    <div class="track-div col-lg-4 col-12 d-flex">
+    <div class="track-div col-lg-6 col-12 d-flex">
         <div class="col-6">
             <h2>
-                Input Calories Burnt
+                Input Calories Burned
             </h2>
             <form autocomplete="off">
                 <div>
