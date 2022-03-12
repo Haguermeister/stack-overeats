@@ -1,14 +1,21 @@
-const data = {
-    datasets: [{
-        borderColor: "rgba(0,255,255,.75)",
-        pointBorderColor: "#fff",
-        data: [80, 20],
-        backgroundColor: [
-            '#13726d',
-            '#42e4dc'],
-        hoverOffset: 4
-    }]
-};
+const userId = JSON.parse(localStorage.getItem('userId'));
+let caloriesBurnedCurrent = 0;
+function getCurrent() {
+    const response = await fetch(`/api/calorieoutput/${userId}`, {
+        method: "get"
+        ,
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    if (response.ok) {
+        caloriesBurnedCurrent = response.json.calories;
+    }
+    else {
+        alert(response.statusText);
+    }
+}
+
 new Chart(document.getElementById('calorieProgress'), {
     type: 'doughnut',
     data: data,
@@ -78,7 +85,18 @@ new Chart(document.getElementById('carbProgress'), {
 });
 new Chart(document.getElementById('calorieGoal'), {
     type: 'doughnut',
-    data: data,
+    data:
+    {
+        datasets: [{
+            borderColor: "rgba(0,255,255,.75)",
+            pointBorderColor: "#fff",
+            data: [caloriesBurnedCurrent, calorieGoal - caloriesBurnedCurrent],
+            backgroundColor: [
+                '#13726d',
+                '#42e4dc'],
+            hoverOffset: 4
+        }]
+    },
     options: {
         responsive: true,
         plugins: {
@@ -99,3 +117,32 @@ new Chart(document.getElementById('calorieGoal'), {
 
     }
 });
+
+async function caloriesBurnedSubmitHandler(event) {
+    event.preventDefault();
+
+    //const id = ;
+
+    const validation = document.getElementById('caloriesInput').value
+    if (validation.isInterger()) {
+        caloriesBurnedCurrent += document.getElementById('caloriesInput').value;
+    }
+
+    const response = await fetch('/api/calorieoutput/upvote', {
+        method: "PUT",
+        body: JSON.stringify({
+            user_id: id,
+            calories_burnt_text: caloriesBurnedCurrent
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    if (response.ok) {
+        document.location.reload();
+    }
+    else {
+        alert(response.statusText);
+    }
+}
+document.querySelector('.upvote-btn').addEventListener('click', caloriesBurnedSubmitHandler);
