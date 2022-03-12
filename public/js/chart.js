@@ -1,22 +1,9 @@
-const userId = JSON.parse(localStorage.getItem('userId'));
 let caloriesBurnedCurrent = 0;
-function getCurrent() {
-    const response = await fetch(`/api/calorieoutput/${userId}`, {
-        method: "get"
-        ,
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
-    if (response.ok) {
-        caloriesBurnedCurrent = response.json.calories;
-    }
-    else {
-        alert(response.statusText);
-    }
-}
+let caloriesConsumedCurrent = 0;
+let calorieConsumedGoal = 0;
+let calorieBurnedGoal = 0;
 
-new Chart(document.getElementById('calorieProgress'), {
+const consumedChart = new Chart(document.getElementById('calorieConsumedChart'), {
     type: 'doughnut',
     data: {
         datasets: [{
@@ -48,7 +35,7 @@ new Chart(document.getElementById('calorieProgress'), {
         }
     }
 });
-new Chart(document.getElementById('calorieGoal'), {
+const burnedChart = new Chart(document.getElementById('calorieBurnedChart'), {
     type: 'doughnut',
     data:
     {
@@ -83,31 +70,92 @@ new Chart(document.getElementById('calorieGoal'), {
     }
 });
 
-async function caloriesBurnedSubmitHandler(event) {
-    event.preventDefault();
-
-    //const id = ;
-
-    const validation = document.getElementById('caloriesInput').value
-    if (validation.isInterger()) {
-        caloriesBurnedCurrent += document.getElementById('caloriesInput').value;
+function getUserId() {
+    const userId = localStorage.getItem('userId');
+    return userId ?? 1;
+}
+async function getCurrent(userId) {
+    const response = await fetch(`/api/calorieoutput/${userId}`, {
+        method: "get"
+        ,
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    if (response.ok) {
+        caloriesBurnedCurrent = response.json.calories;
+        return caloriesBurnedCurrent;
+    }
+    else {
+        alert(response.statusText);
     }
 
-    const response = await fetch('/api/calorieoutput/upvote', {
+}
+function getBurnedCalories() {
+    let userId = getUserId();
+    caloriesBurnedCurrent = getCurrent(userId);
+    return caloriesBurnedCurrent;
+}
+async function caloriesConsumedSubmitHandler(event) {
+    event.preventDefault();
+    let userId = getUserId();
+    let consumed = parseInt(document.getElementById('consumedInput').value);
+    if (Number.isInteger(consumed)) {
+        caloriesBurnedCurrent += consumed;
+    }
+    else {
+        alert('Please input an interger into the input');
+
+    }
+
+    const response = await fetch('/api/calories-consumed-routes', {
         method: "PUT",
         body: JSON.stringify({
-            user_id: id,
-            calories_burnt_text: caloriesBurnedCurrent
+            user_id: userId,
+            amount: caloriesConsumedCurrent
         }),
         headers: {
             'Content-Type': 'application/json'
         }
     });
     if (response.ok) {
-        document.location.reload();
+        consumedChart.data.datasets[0].data = [caloriesConsumedCurrent, calorieConsumedGoal - caloriesConsumedCurrent];
+        consumedChart.update();
     }
     else {
         alert(response.statusText);
     }
 }
-document.querySelector('.upvote-btn').addEventListener('click', caloriesBurnedSubmitHandler);
+async function caloriesBurnedSubmitHandler(event) {
+    event.preventDefault();
+
+    let userId = getUserId();
+    let burned = parseInt(document.getElementById('burnedInput').value);
+    if (Number.isInteger(burned)) {
+        caloriesBurnedCurrent += burned;
+    }
+    else {
+        alert('Please input an interger into the input');
+    }
+
+    const response = await fetch('/api/calories-burned-routes', {
+        method: "PUT",
+        body: JSON.stringify({
+            user_id: userId,
+            amount: caloriesBurnedCurrent
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    if (response.ok) {
+        burnedChart.data.datasets[0].data = [caloriesBurnedCurrent, calorieBurnedGoal - caloriesBurnedCurrent];
+        burnedChart.update();
+    }
+    else {
+        alert(response.statusText);
+    }
+}
+
+document.querySelector('#burned-submit').addEventListener('click', caloriesBurnedSubmitHandler);
+document.querySelector('#consumed-submit').addEventListener('click', caloriesConsumedSubmitHandler);
