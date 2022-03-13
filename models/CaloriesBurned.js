@@ -5,13 +5,6 @@ class CaloriesBurned extends Model {}
 //make default values = zero, created_at, updated_at
 CaloriesBurned.init(
   {
-    // id: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    //   primaryKey: true,
-    //   autoIncrement: true
-    // },
-
     // date: {
     //   type: DataTypes.DATE,
     //   allowNull: false,
@@ -21,6 +14,13 @@ CaloriesBurned.init(
     //   type: DataTypes.STRING,
     //   allowNull: false
     // },
+
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true
+    },
     
     user_id: {
       primaryKey: true,
@@ -48,7 +48,6 @@ CaloriesBurned.init(
   freezeTableName: true,
   underscored: true,
   modelName: 'CaloriesBurned',
-
 });
 
 module.exports = CaloriesBurned;

@@ -5,13 +5,6 @@ class CaloriesConsumed extends Model {}
 
 CaloriesConsumed.init(
   {
-    // id: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    //   primaryKey: true,
-    //   autoIncrement: true
-    // },
-
     // date: {
     //   type: DataTypes.DATE,
     //   allowNull: false,
@@ -21,6 +14,13 @@ CaloriesConsumed.init(
     //   type: DataTypes.STRING,
     //   allowNull: false
     // },
+
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true
+    },
 
     user_id: {
       primaryKey: true,
@@ -36,19 +36,18 @@ CaloriesConsumed.init(
       allowNull: false,
     },
 
-      goal: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      }
-    },
+    goal: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    }
+  },
      
 {
   sequelize,
   timestamps: false,
   freezeTableName: true,
   underscored: true,
-  modelName: 'CaloriesConsumed',
-  
+  modelName: 'CaloriesConsumed', 
 });
 
 module.exports = CaloriesConsumed;

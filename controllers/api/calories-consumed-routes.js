@@ -5,7 +5,12 @@ router.get('/:id', (req, res) => {
   CaloriesConsumed.findOne({
     where: {
       id: req.params.id
-    }
+    },
+    attributes: [
+      'id',
+      'amount',
+      'goal'
+    ]
   })
     .then(caloriesConsumedData => res.json(caloriesConsumedData))
     .catch(err => {
@@ -18,9 +23,9 @@ router.post('/', (req, res) => {
     CaloriesConsumed.create({
       // date_text: req.body.date_text,
       // meal_type_text: req.body.meal_type_text,
-      user_id: req.session.user_id,
       amount: req.body.amount,
-      goal: req.body.goal
+      goal: req.body.goal,
+      user_id: req.body.user_id
     })
       .then(caloriesConsumedData => res.json(caloriesConsumedData))
       .catch(err => {
@@ -33,7 +38,6 @@ router.post('/', (req, res) => {
     CaloriesConsumed.update({
       // date_text: req.body.date_text,
       // meal_type_text: req.body.meal_type_text,
-      user_id: req.session.user_id,
       amount: req.body.amount,
       goal: req.body.goal
     },

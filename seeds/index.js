@@ -1,7 +1,7 @@
 const sequelize = require('../config/connection');
 const seedCaloriesBurned = require('./caloriesBurnedData');
 const seedCaloriesConsumed = require('./caloriesConsumedData');
-const seedUsers = require('./User');
+const seedUsers = require('./userData');
 
 const seedAll = async () => {
   await sequelize.sync({ force: true });
