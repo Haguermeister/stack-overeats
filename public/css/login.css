@@ -164,7 +164,7 @@
   }
   
   #form #contact .input-group:hover .hover-box {
-    height: 2em;
+    height: 3em;
     border: 0.05em solid var(--primary);
     pointer-events: none;
   }

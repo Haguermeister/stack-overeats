@@ -1,5 +1,5 @@
 const User = require('./User');
-const CalorieOutput = require('./CalorieOutput');
-//const Painting = require('./Painting');
+const CaloriesBurned = require('./CaloriesBurned');
+const CaloriesConsumed = require('./CaloriesConsumed');
 
-module.exports = { User, CalorieOutput };
+module.exports = { User, CaloriesBurned, CaloriesConsumed };
