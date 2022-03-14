@@ -19,33 +19,33 @@ router.get('/:userId', (req, res) => {
     });
 });
 
-router.post('/:id', (req, res) => {
-  CaloriesConsumed.create({
-    // date_text: req.body.date_text,
-    // meal_type_text: req.body.meal_type_text,
-    amount: req.body.amount,
-    goal: req.body.goal,
-    user_id: req.params.id
-  })
-    .then(caloriesConsumedData => res.json(caloriesConsumedData))
-    .catch(err => {
-      console.log(err);
-      res.status(400).json(err);
-    });
-});
+router.post('/:userId', (req, res) => {
+    CaloriesConsumed.create({
+      // date_text: req.body.date_text,
+      // meal_type_text: req.body.meal_type_text,
+      amount: req.body.amount,
+      goal: req.body.goal,
+      user_id: req.params.userId
+    })
+      .then(caloriesConsumedData => res.json(caloriesConsumedData))
+      .catch(err => {
+        console.log(err);
+        res.status(400).json(err);
+      });
+  });
 
-router.put('/:id', (req, res) => {
-  CaloriesConsumed.update({
-    // date_text: req.body.date_text,
-    // meal_type_text: req.body.meal_type_text,
-    amount: req.body.amount,
-    goal: req.body.goal
-  },
+  router.put('/:userId', (req, res) => {
+    CaloriesConsumed.update({
+      // date_text: req.body.date_text,
+      // meal_type_text: req.body.meal_type_text,
+      amount: req.body.amount,
+      goal: req.body.goal
+    },
 
     {
-      where: {
-        id: req.params.id
-      }
+    where: {
+      user_id: req.params.userId
+    }
 
     })
     .then(caloriesConsumedData => res.json(caloriesConsumedData))
