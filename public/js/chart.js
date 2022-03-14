@@ -1,7 +1,7 @@
 let caloriesBurnedCurrent = 0;
 let caloriesConsumedCurrent = 0;
-let calorieConsumedGoal = 2000;
-let calorieBurnedGoal = 2000;
+let calorieConsumedGoal = 1000;
+let calorieBurnedGoal = 1000;
 
 
 function getUserId() {
@@ -39,16 +39,20 @@ async function getBurnedCurrent(userId) {
     }
 }
 
-function getCurrentCalories() {
+async function getCurrentCalories() {
     let userId = getUserId();
-    caloriesBurnedCurrent = getBurnedCurrent(userId);
-    caloriesConsumedCurrent = getConsumedCurrent(userId);
-    return caloriesBurnedCurrent, caloriesConsumedCurrent;
+    console.log('UserId:', userId);
+    await getBurnedCurrent(userId);
+    await getConsumedCurrent(userId);
+    if (caloriesBurnedCurrent, caloriesConsumedCurrent) {
+        console.log('caloriesBurnedCurrent', caloriesBurnedCurrent);
+        console.log('caloriesConsumedCurrent', caloriesConsumedCurrent);
+        return caloriesBurnedCurrent, caloriesConsumedCurrent;
+    }
 }
 
 function chartsetup() {
     getCurrentCalories();
-    console.log('Calories Burned Current:', caloriesBurnedCurrent, 'Calories Consumed Current', caloriesConsumedCurrent)
     const consumedChart = new Chart(document.getElementById('calorieConsumedChart'), {
         type: 'doughnut',
         data: {
@@ -115,8 +119,9 @@ function chartsetup() {
 
         }
     });
+    return consumedChart, burnedChart;
 }
-document.readyState(chartsetup());
+chartsetup();
 async function caloriesConsumedSubmitHandler(event) {
     event.preventDefault();
     let userId = getUserId();
@@ -126,12 +131,10 @@ async function caloriesConsumedSubmitHandler(event) {
     }
     else {
         alert('Please input an interger into the input');
-
     }
-    const response = await fetch('/api/calories-consumed-routes', {
+    const response = await fetch(`/api/caloriesconsumed/${userId}`, {
         method: "PUT",
         body: JSON.stringify({
-            user_id: userId,
             amount: caloriesConsumedCurrent
         }),
         headers: {
@@ -157,7 +160,7 @@ async function caloriesBurnedSubmitHandler(event) {
     else {
         alert('Please input an interger into the input');
     }
-    const response = await fetch('/api/calories-burned-routes', {
+    const response = await fetch(`/api/caloriesburned/${userId}`, {
         method: "PUT",
         body: JSON.stringify({
             user_id: userId,
