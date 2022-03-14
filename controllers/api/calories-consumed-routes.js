@@ -19,13 +19,13 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
+router.post('/:id', (req, res) => {
     CaloriesConsumed.create({
       // date_text: req.body.date_text,
       // meal_type_text: req.body.meal_type_text,
       amount: req.body.amount,
       goal: req.body.goal,
-      user_id: req.body.user_id
+      user_id: req.params.id
     })
       .then(caloriesConsumedData => res.json(caloriesConsumedData))
       .catch(err => {

@@ -22,14 +22,14 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
+router.post('/:id', (req, res) => {
     CaloriesBurned.create({
       // date_text: req.body.date_text,
       // time_spent_text: req.body.time_spent_text,
       // exercise_type_text: req.body.exercise_type_text,
       amount: req.body.amount,
       goal: req.body.goal,
-      user_id: req.body.user_id
+      user_id: req.params.id
     })
       .then(caloriesBurnedData => res.json(caloriesBurnedData))
       .catch(err => {
