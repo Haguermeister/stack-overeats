@@ -4,7 +4,7 @@ const caloriesconsumedData = [
   {
     // date: 'April 20, 2021 08:30:00',
     // meal_type: 'breakfast',
-    amount: 2100,
+    amount: 1000,
     goal: 2300,
     user_id: 1,
   },

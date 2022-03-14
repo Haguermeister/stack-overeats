@@ -5,7 +5,7 @@ const caloriesburnedData = [
     // date: 'April 20, 2021 07:00:00',
     // time_spent: '30 minutes',
     // exercise_type: 'strength',
-    amount: 1600,
+    amount: 800,
     goal: 2000,
     user_id: 1,
   },

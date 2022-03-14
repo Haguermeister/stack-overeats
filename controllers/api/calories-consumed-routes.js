@@ -47,31 +47,31 @@ router.post('/:userId', (req, res) => {
       user_id: req.params.userId
     }
 
-  })
-  .then(caloriesConsumedData => res.json(caloriesConsumedData))
+    })
+    .then(caloriesConsumedData => res.json(caloriesConsumedData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
-  });
-  
-  // router.delete('/:id', (req, res) => {
-  //   CaloriesConsumed.destroy({
-  //     where: {
-  //       id: req.params.id
-  //     }
-  //   })
-  //     .then(caloriesConsumedData => {
-  //       if (!caloriesConsumedData) {
-  //         res.status(404).json({ message: 'No calories consumed found with this id!' });
-  //         return;
-  //       }
-  //       res.json(caloriesConsumedData);
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //       res.status(500).json(err);
-  //     });
-  // });
-  
-  module.exports = router;
+});
+
+// router.delete('/:id', (req, res) => {
+//   CaloriesConsumed.destroy({
+//     where: {
+//       id: req.params.id
+//     }
+//   })
+//     .then(caloriesConsumedData => {
+//       if (!caloriesConsumedData) {
+//         res.status(404).json({ message: 'No calories consumed found with this id!' });
+//         return;
+//       }
+//       res.json(caloriesConsumedData);
+//     })
+//     .catch(err => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// });
+
+module.exports = router;
