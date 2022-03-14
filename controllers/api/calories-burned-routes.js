@@ -5,22 +5,31 @@ router.get('/:id', (req, res) => {
   CaloriesBurned.findOne({
     where: {
       id: req.params.id
-    }
+    },
+    attributes: [
+      'id',
+      'amount',
+      'goal'
+      //'created_at' throws error
+    ]
   })
-    .then(caloriesBurnedData => res.json(caloriesBurnedData))
+    .then(caloriesBurnedData => {
+      console.log(caloriesBurnedData);
+        res.json(caloriesBurnedData)})
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
 });
 
-router.post('/', (req, res) => {
+router.post('/:id', (req, res) => {
     CaloriesBurned.create({
       // date_text: req.body.date_text,
       // time_spent_text: req.body.time_spent_text,
       // exercise_type_text: req.body.exercise_type_text,
-      user_id: req.session.user_id,
-      amount: req.body.amount
+      amount: req.body.amount,
+      goal: req.body.goal,
+      user_id: req.params.id
     })
       .then(caloriesBurnedData => res.json(caloriesBurnedData))
       .catch(err => {
@@ -34,8 +43,8 @@ router.post('/', (req, res) => {
       // date_text: req.body.date_text,
       // time_spent_text: req.body.time_spent_text,
       // exercise_type_text: req.body.exercise_type_text,
-      user_id: req.session.user_id,
-      amount: req.body.amount
+      amount: req.body.amount,
+      goal: req.body.goal
     },
 
     {
