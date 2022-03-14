@@ -1,83 +1,31 @@
 let caloriesBurnedCurrent = 0;
 let caloriesConsumedCurrent = 0;
-let calorieConsumedGoal = 0;
-let calorieBurnedGoal = 0;
+let calorieConsumedGoal = 2000;
+let calorieBurnedGoal = 2000;
 
-const consumedChart = new Chart(document.getElementById('calorieConsumedChart'), {
-    type: 'doughnut',
-    data: {
-        datasets: [{
-            borderColor: "rgba(0,255,255,.75)",
-            pointBorderColor: "#fff",
-            data: [caloriesConsumedCurrent, calorieConsumedGoal - caloriesConsumedCurrent],
-            backgroundColor: [
-                '#13726d',
-                '#42e4dc'],
-            hoverOffset: 4
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            title: {
-                display: true,
-                color: "#fff",
-                font: function (context) {
-                    var width = context.chart.width;
-                    var size = Math.round(width / 9);
-                    return {
-                        size: size,
-                        weight: 600
-                    };
-                },
-                text: 'Calorie Consumption'
-            }
-        }
-    }
-});
-const burnedChart = new Chart(document.getElementById('calorieBurnedChart'), {
-    type: 'doughnut',
-    data:
-    {
-        datasets: [{
-            borderColor: "rgba(0,255,255,.75)",
-            pointBorderColor: "#fff",
-            data: [caloriesBurnedCurrent, calorieBurnedGoal - caloriesBurnedCurrent],
-            backgroundColor: [
-                '#13726d',
-                '#42e4dc'],
-            hoverOffset: 4
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            title: {
-                display: true,
-                color: "#fff",
-                font: function (context) {
-                    var width = context.chart.width;
-                    var size = Math.round(width / 9);
-                    return {
-                        size: size,
-                        weight: 600
-                    };
-                },
-                text: 'Calories Burnt'
-            }
-        },
-
-    }
-});
 
 function getUserId() {
     const userId = localStorage.getItem('userId');
     return userId ?? 1;
 }
-async function getCurrent(userId) {
-    const response = await fetch(`/api/calorieoutput/${userId}`, {
-        method: "get"
-        ,
+async function getConsumedCurrent(userId) {
+    const response = await fetch(`/api/caloriesconsumed/${userId}`, {
+        method: "get",
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    if (response.ok) {
+        caloriesConsumedCurrent = response.json.calories;
+        return caloriesConsumedCurrent;
+    }
+    else {
+        alert(response.statusText);
+    }
+}
+async function getBurnedCurrent(userId) {
+    const response = await fetch(`/api/caloriesburned/${userId}`, {
+        method: "get",
         headers: {
             'Content-Type': 'application/json'
         }
@@ -89,13 +37,86 @@ async function getCurrent(userId) {
     else {
         alert(response.statusText);
     }
+}
 
-}
-function getBurnedCalories() {
+function getCurrentCalories() {
     let userId = getUserId();
-    caloriesBurnedCurrent = getCurrent(userId);
-    return caloriesBurnedCurrent;
+    caloriesBurnedCurrent = getBurnedCurrent(userId);
+    caloriesConsumedCurrent = getConsumedCurrent(userId);
+    return caloriesBurnedCurrent, caloriesConsumedCurrent;
 }
+
+function chartsetup() {
+    getCurrentCalories();
+    console.log('Calories Burned Current:', caloriesBurnedCurrent, 'Calories Consumed Current', caloriesConsumedCurrent)
+    const consumedChart = new Chart(document.getElementById('calorieConsumedChart'), {
+        type: 'doughnut',
+        data: {
+            datasets: [{
+                borderColor: "rgba(0,255,255,.75)",
+                pointBorderColor: "#fff",
+                data: [caloriesConsumedCurrent, calorieConsumedGoal - caloriesConsumedCurrent],
+                backgroundColor: [
+                    '#13726d',
+                    '#42e4dc'],
+                hoverOffset: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    color: "#fff",
+                    font: function (context) {
+                        var width = context.chart.width;
+                        var size = Math.round(width / 9);
+                        return {
+                            size: size,
+                            weight: 600
+                        };
+                    },
+                    text: 'Calorie Consumption'
+                }
+            }
+        }
+    });
+    const burnedChart = new Chart(document.getElementById('calorieBurnedChart'), {
+        type: 'doughnut',
+        data:
+        {
+            datasets: [{
+                borderColor: "rgba(0,255,255,.75)",
+                pointBorderColor: "#fff",
+                data: [caloriesBurnedCurrent, calorieBurnedGoal - caloriesBurnedCurrent],
+                backgroundColor: [
+                    '#13726d',
+                    '#42e4dc'],
+                hoverOffset: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    color: "#fff",
+                    font: function (context) {
+                        var width = context.chart.width;
+                        var size = Math.round(width / 9);
+                        return {
+                            size: size,
+                            weight: 600
+                        };
+                    },
+                    text: 'Calories Burnt'
+                }
+            },
+
+        }
+    });
+}
+document.readyState(chartsetup());
 async function caloriesConsumedSubmitHandler(event) {
     event.preventDefault();
     let userId = getUserId();
