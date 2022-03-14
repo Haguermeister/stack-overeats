@@ -8,45 +8,63 @@ function getUserId() {
     const userId = localStorage.getItem('userId');
     return userId ?? 1;
 }
-async function getConsumedCurrent(userId) {
-    const response = await fetch(`/api/caloriesconsumed/${userId}`, {
-        method: "get",
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
-    if (response.ok) {
-        caloriesConsumedCurrent = response.json.calories;
-        return caloriesConsumedCurrent;
-    }
-    else {
-        alert(response.statusText);
-    }
+function getConsumedCurrent(userId) {
+    /*  //console.log('Start of consumned function');
+     let route = `http://localhost:3001/api/caloriesconsumed/${userId}`;
+     const response = await fetch(route, {
+         method: "get",
+         headers: {
+             'Content-Type': 'application/json'
+         }
+     });
+     if (response.ok) {
+         caloriesConsumedCurrent = response.json.amount;
+         console.log(response);
+         //console.log(response.json.amount);
+ 
+         //console.log('caloriesConsumedCurrent', caloriesConsumedCurrent);
+         return caloriesConsumedCurrent;
+     }
+     else {
+         alert(response.statusText);
+     } */
+    fetch(`http://localhost:3001/api/caloriesconsumed/${userId}`)
+        .then(response => response.json())
+        .then(data => console.log(data));
 }
-async function getBurnedCurrent(userId) {
-    const response = await fetch(`/api/caloriesburned/${userId}`, {
+function getBurnedCurrent(userId) {
+    //console.log('Start of burned function');
+    let route = `http://localhost:3001/api/caloriesburned/${userId}`;
+    /* const response = await fetch(route, {
         method: "get",
         headers: {
             'Content-Type': 'application/json'
         }
     });
     if (response.ok) {
-        caloriesBurnedCurrent = response.json.calories;
-        return caloriesBurnedCurrent;
+         caloriesBurnedCurrent = response.json.amount;
+        console.log('caloriesBurnedCurrent', caloriesBurnedCurrent);
+        return caloriesBurnedCurrent; 
     }
     else {
         alert(response.statusText);
-    }
+    } */
+    fetch(route, {
+        method: "get",
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(response => response.json())
+        .then(data => console.log(data));
 }
 
-async function getCurrentCalories() {
+function getCurrentCalories() {
     let userId = getUserId();
     console.log('UserId:', userId);
-    await getBurnedCurrent(userId);
-    await getConsumedCurrent(userId);
+    getBurnedCurrent(userId);
+    getConsumedCurrent(userId);
     if (caloriesBurnedCurrent, caloriesConsumedCurrent) {
-        console.log('caloriesBurnedCurrent', caloriesBurnedCurrent);
-        console.log('caloriesConsumedCurrent', caloriesConsumedCurrent);
         return caloriesBurnedCurrent, caloriesConsumedCurrent;
     }
 }
