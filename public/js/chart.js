@@ -9,7 +9,7 @@ function getUserId() {
     return userId ?? 1;
 }
 function getConsumedCurrent(userId,) {
-    let route = `http://localhost:3001/api/caloriesconsumed/${userId}`;
+    let route = `/api/caloriesconsumed/${userId}`;
 
     return fetch(route, {
         method: "get",
@@ -22,7 +22,7 @@ function getConsumedCurrent(userId,) {
     );
 }
 function getBurnedCurrent(userId) {
-    let route = `http://localhost:3001/api/caloriesburned/${userId}`;
+    let route = `/api/caloriesburned/${userId}`;
     return fetch(route, {
         method: "get",
         headers: {
