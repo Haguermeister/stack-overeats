@@ -13,7 +13,7 @@ const loginFormHandler = async (event) => {
 
     if (response.ok) {
       //      document.location.replace('/track');
-      const userId = (await response.json()).user.id
+      const userId = (await response.json()).user.id;
       localStorage.setItem("userId", userId);
       document.location.replace('/track');
     } else {
@@ -37,7 +37,7 @@ const signupFormHandler = async (event) => {
       headers: { 'Content-Type': 'application/json' },
     });
     if (response.ok) {
-      const userId = (await response.json()).user.id
+      const userId = (await response.json()).user.id;
       localStorage.setItem("userId", userId);
       document.location.replace('/track');
     } else {

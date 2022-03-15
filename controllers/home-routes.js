@@ -23,17 +23,12 @@ router.get('/track', withAuth, (req, res) => {
   });
   return;
 });
-router.get('/lookup', withAuth, (req, res) => {
-  res.render('lookup', {
+router.get('/profile', withAuth, (req, res) => {
+  res.render('profile', {
     loggedIn: req.session.loggedIn,
   });
   return;
 });
-router.get('/history', withAuth, (req, res) => {
-  res.render('history', {
-    loggedIn: req.session.loggedIn,
-  });
-  return;
-});
+
 
 module.exports = router;

@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class CaloriesConsumed extends Model {}
+class CaloriesConsumed extends Model { }
 
 CaloriesConsumed.init(
   {
@@ -29,7 +29,8 @@ CaloriesConsumed.init(
       references: {
         model: 'user',
         key: 'id'
-    }},
+      }
+    },
 
     amount: {
       type: DataTypes.INTEGER,
@@ -41,13 +42,13 @@ CaloriesConsumed.init(
       allowNull: false,
     }
   },
-     
-{
-  sequelize,
-  timestamps: false,
-  freezeTableName: true,
-  underscored: true,
-  modelName: 'CaloriesConsumed', 
-});
+
+  {
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'CaloriesConsumed',
+  });
 
 module.exports = CaloriesConsumed;

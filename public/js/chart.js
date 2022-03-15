@@ -1,125 +1,155 @@
-let caloriesBurnedCurrent = 0;
-let caloriesConsumedCurrent = 0;
-let calorieConsumedGoal = 0;
-let calorieBurnedGoal = 0;
+let caloriesConsumedCurrentData;
+let caloriesBurnedCurrentData;
+let consumedChart;
+let burnedChart;
 
-const consumedChart = new Chart(document.getElementById('calorieConsumedChart'), {
-    type: 'doughnut',
-    data: {
-        datasets: [{
-            borderColor: "rgba(0,255,255,.75)",
-            pointBorderColor: "#fff",
-            data: [caloriesConsumedCurrent, calorieConsumedGoal - caloriesConsumedCurrent],
-            backgroundColor: [
-                '#13726d',
-                '#42e4dc'],
-            hoverOffset: 4
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            title: {
-                display: true,
-                color: "#fff",
-                font: function (context) {
-                    var width = context.chart.width;
-                    var size = Math.round(width / 9);
-                    return {
-                        size: size,
-                        weight: 600
-                    };
-                },
-                text: 'Calorie Consumption'
-            }
-        }
-    }
-});
-const burnedChart = new Chart(document.getElementById('calorieBurnedChart'), {
-    type: 'doughnut',
-    data:
-    {
-        datasets: [{
-            borderColor: "rgba(0,255,255,.75)",
-            pointBorderColor: "#fff",
-            data: [caloriesBurnedCurrent, calorieBurnedGoal - caloriesBurnedCurrent],
-            backgroundColor: [
-                '#13726d',
-                '#42e4dc'],
-            hoverOffset: 4
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            title: {
-                display: true,
-                color: "#fff",
-                font: function (context) {
-                    var width = context.chart.width;
-                    var size = Math.round(width / 9);
-                    return {
-                        size: size,
-                        weight: 600
-                    };
-                },
-                text: 'Calories Burnt'
-            }
-        },
-
-    }
-});
 
 function getUserId() {
     const userId = localStorage.getItem('userId');
     return userId ?? 1;
 }
-async function getCurrent(userId) {
-    const response = await fetch(`/api/calorieoutput/${userId}`, {
-        method: "get"
-        ,
+function getConsumedCurrent(userId,) {
+    let route = `/api/caloriesconsumed/${userId}`;
+
+    return fetch(route, {
+        method: "get",
         headers: {
             'Content-Type': 'application/json'
         }
+    }).then(response => response.json()).then(data => {
+        return data;
+    }
+    );
+}
+function getBurnedCurrent(userId) {
+    let route = `/api/caloriesburned/${userId}`;
+    return fetch(route, {
+        method: "get",
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then(response => response.json()).then(data => {
+        return data;
     });
-    if (response.ok) {
-        caloriesBurnedCurrent = response.json.calories;
-        return caloriesBurnedCurrent;
+}
+function chartsetup(caloriesConsumedCurrentData, caloriesBurnedCurrentData) {
+    consumedChart = new Chart(document.getElementById('calorieConsumedChart'), {
+        type: 'doughnut',
+        data: {
+            datasets: [{
+                borderColor: "rgba(0,255,255,.75)",
+                pointBorderColor: "#fff",
+                data: [caloriesConsumedCurrentData.amount, caloriesConsumedCurrentData.goal - caloriesConsumedCurrentData.amount],
+                backgroundColor: [
+                    '#13726d',
+                    '#42e4dc'],
+                hoverOffset: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    color: "#fff",
+                    font: function (context) {
+                        var width = context.chart.width;
+                        var size = Math.round(width / 9);
+                        return {
+                            size: size,
+                            weight: 600
+                        };
+                    },
+                    text: 'Calorie Consumption'
+                }
+            }
+        }
+    });
+    let mathConsumed = caloriesConsumedCurrentData.goal - caloriesConsumedCurrentData.amount;
+    if (mathConsumed <= 0) {
+        mathConsumed = 0;
+        consumedChart.data.datasets[0].backgroundColor[0] = "#8D814B";
+        consumedChart.data.datasets[0].data = [caloriesConsumedCurrentData.amount, mathConsumed];
+        consumedChart.update();
     }
-    else {
-        alert(response.statusText);
-    }
+    burnedChart = new Chart(document.getElementById('calorieBurnedChart'), {
+        type: 'doughnut',
+        data:
+        {
+            datasets: [{
+                borderColor: "rgba(0,255,255,.75)",
+                pointBorderColor: "#fff",
+                data: [caloriesBurnedCurrentData.amount, caloriesBurnedCurrentData.goal - caloriesBurnedCurrentData.amount],
+                backgroundColor: [
+                    '#13726d',
+                    '#42e4dc'],
+                hoverOffset: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    color: "#fff",
+                    font: function (context) {
+                        var width = context.chart.width;
+                        var size = Math.round(width / 9);
+                        return {
+                            size: size,
+                            weight: 600
+                        };
+                    },
+                    text: 'Calories Burnt'
+                }
+            },
 
+        }
+    });
+    let mathBurned = caloriesBurnedCurrentData.goal - caloriesBurnedCurrentData.amount;
+    if (mathBurned <= 0) {
+        mathBurned = 0;
+        burnedChart.data.datasets[0].backgroundColor[0] = "#8D814B";
+        burnedChart.data.datasets[0].data = [caloriesBurnedCurrentData.amount, mathBurned];
+        burnedChart.update();
+    }
+    return consumedChart, burnedChart;
 }
-function getBurnedCalories() {
+async function displayChart() {
     let userId = getUserId();
-    caloriesBurnedCurrent = getCurrent(userId);
-    return caloriesBurnedCurrent;
+    caloriesConsumedCurrentData = await getConsumedCurrent(userId);
+    caloriesBurnedCurrentData = await getBurnedCurrent(userId);
+    console.log('Calories Consumed Current', caloriesConsumedCurrentData, 'Calories Burned Current', caloriesBurnedCurrentData);
+    return chartsetup(caloriesBurnedCurrentData, caloriesConsumedCurrentData), caloriesBurnedCurrentData, caloriesConsumedCurrentData;
 }
+displayChart();
+
 async function caloriesConsumedSubmitHandler(event) {
     event.preventDefault();
     let userId = getUserId();
     let consumed = parseInt(document.getElementById('consumedInput').value);
-    if (Number.isInteger(consumed)) {
-        caloriesBurnedCurrent += consumed;
-    }
-    else {
-        alert('Please input an interger into the input');
-
-    }
-
-    const response = await fetch('/api/calories-consumed-routes', {
+    console.log(consumed);
+    caloriesConsumedCurrentData.amount += consumed;
+    console.log(caloriesConsumedCurrentData.amount)
+    const response = await fetch(`/api/caloriesconsumed/${userId}`, {
         method: "PUT",
         body: JSON.stringify({
-            user_id: userId,
-            amount: caloriesConsumedCurrent
+            amount: caloriesConsumedCurrentData.amount
         }),
         headers: {
             'Content-Type': 'application/json'
         }
     });
     if (response.ok) {
-        consumedChart.data.datasets[0].data = [caloriesConsumedCurrent, calorieConsumedGoal - caloriesConsumedCurrent];
+        let math = caloriesConsumedCurrentData.goal - caloriesConsumedCurrentData.amount;
+        if (math <= 0) {
+            math = 0;
+            consumedChart.data.datasets[0].backgroundColor[0] = "#8D814B";
+        }
+        else {
+            consumedChart.data.datasets[0].backgroundColor[0] = "#13726d";
+        }
+        consumedChart.data.datasets[0].data = [caloriesConsumedCurrentData.amount, math];
         consumedChart.update();
     }
     else {
@@ -131,24 +161,30 @@ async function caloriesBurnedSubmitHandler(event) {
 
     let userId = getUserId();
     let burned = parseInt(document.getElementById('burnedInput').value);
-    if (Number.isInteger(burned)) {
-        caloriesBurnedCurrent += burned;
-    }
-    else {
-        alert('Please input an interger into the input');
-    }
-    const response = await fetch('/api/calories-burned-routes', {
+    console.log(burned);
+    caloriesBurnedCurrentData.amount += burned;
+    console.log(caloriesBurnedCurrentData.amount)
+
+    const response = await fetch(`/api/caloriesburned/${userId}`, {
         method: "PUT",
         body: JSON.stringify({
             user_id: userId,
-            amount: caloriesBurnedCurrent
+            amount: caloriesBurnedCurrentData.amount
         }),
         headers: {
             'Content-Type': 'application/json'
         }
     });
     if (response.ok) {
-        burnedChart.data.datasets[0].data = [caloriesBurnedCurrent, calorieBurnedGoal - caloriesBurnedCurrent];
+        let math = caloriesBurnedCurrentData.goal - caloriesBurnedCurrentData.amount;
+        if (math <= 0) {
+            math = 0;
+            burnedChart.data.datasets[0].backgroundColor[0] = "#8D814B";
+        }
+        else {
+            burnedChart.data.datasets[0].backgroundColor[0] = "#13726d";
+        }
+        burnedChart.data.datasets[0].data = [caloriesBurnedCurrentData.amount, math];
         burnedChart.update();
     }
     else {

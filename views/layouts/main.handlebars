@@ -81,8 +81,7 @@
             {{!-- use id="active-menu" instead of class to keep nav highlighted--}}
             <li class="nav-li"><a class="link" href="/">Home</a></li>
             <li class="nav-li"><a class="link" href="/track">Track</a></li>
-            <li class="nav-li"><a class="link" href="/lookup">Calorie Lookup</a></li>
-            <li class="nav-li"><a class="link" href="/history">History</a></li>
+            <li class="nav-li"><a class="link" href="/profile">Profile</a></li>
             {{#if loggedIn}}
             <li class="nav-li"><a id='logout' class="link" href="/">Logout</a></li>
             {{else}}
@@ -166,8 +165,6 @@
   {{#if loggedIn}}
   <script src="/js/logout.js"></script>
   {{/if}}
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/js/chart.js"></script>
 
 </body>
 
