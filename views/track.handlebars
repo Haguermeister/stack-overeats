@@ -2,36 +2,37 @@
     <h1 id="home-h">Calorie and Exercise Tracking</h2>
 </section>
 <div class="d-flex flex-wrap">
-    <div class="track-div col-lg-6 col-12 d-flex">
-        <div class="col-6">
-            <h2>
+    <div class="track-div col-lg-6 col-12 d-flex align-items-center flex-column">
+        <div class="col-12">
+            <h2 class="text-center">
                 Input Calories Consumed
             </h2>
             <form autocomplete="off">
                 <div class="autocomplete d-flex ">
-                    <input id="consumedInput" type="number" name="foodConsumed" placeholder="400">
+                    <input class='my-auto' id="consumedInput" type="number" name="foodConsumed" placeholder="400">
+                    <button type="submit" id="consumed-submit" class="button-solid ml-3">Submit</button>
                 </div>
-                <button type="submit" id="consumed-submit" class="button-solid">Submit</button>
             </form>
+            <div class="chart-wrap col-9 mx-auto">
+                <canvas id="calorieConsumedChart"></canvas>
+            </div>
         </div>
-        <div class="chart-wrap col-6 d-flex justify-content-center">
-            <canvas id="calorieConsumedChart"></canvas>
-        </div>
+
     </div>
-    <div class="track-div col-lg-6 col-12 d-flex">
-        <div class="col-6">
-            <h2>
+    <div class="track-div col-lg-6 col-12 d-flex align-items-center flex-column">
+        <div class="col-12">
+            <h2 class="text-center">
                 Input Calories Burned
             </h2>
             <form autocomplete="off">
-                <div>
-                    <input id="burnedInput" type="number" name="colriesBurnt" placeholder="2000">
+                <div class="autocomplete d-flex ">
+                    <input class='my-auto' id="burnedInput" type="number" name="colriesBurnt" placeholder="350">
+                    <button type="submit" id="burned-submit" class="button-solid ml-3">Submit</button>
                 </div>
-                <button type="submit" id="burned-submit" class="button-solid">Submit</button>
             </form>
-        </div>
-        <div class="col-6">
-            <canvas id="calorieBurnedChart"></canvas>
+            <div class="chart-wrap col-9 mx-auto">
+                <canvas id="calorieBurnedChart"></canvas>
+            </div>
         </div>
     </div>
 </div>

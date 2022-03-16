@@ -44,10 +44,17 @@
   
 /* Tablet */
 @media only screen and (min-width: 48em) {
-
+  .track-div h2 {
+    font-size: 2.4em;
+    line-height: 2.4em;
+  }
 }
   /* Small Desktop */
 @media only screen and (min-width: 64em) {
+  .track-div h2 {
+    font-size: 2.4em;
+    line-height: 2.4em;
+  }
 }
 /* Large Desktop */
 @media only screen and (min-width: 1300px) {

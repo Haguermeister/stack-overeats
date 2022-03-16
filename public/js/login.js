@@ -23,7 +23,6 @@ const loginFormHandler = async (event) => {
 };
 
 const signupFormHandler = async (event) => {
-  console.log('test: submit');
   event.preventDefault();
 
   const username = document.querySelector('#username-signup').value.trim();

@@ -32,6 +32,9 @@
   /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 @media screen and (min-width: 0px) {
+  input:focus, textarea:focus, select:focus{
+    outline: none;
+}
   body {
     font-size: 17px;
   }
@@ -155,6 +158,10 @@
   }
   .button-solid:hover:before {
     width: 100%;
+  }
+  .button-solid:hover {
+    color: #fff;
+    text-decoration: none;
   }
   button:hover {
     cursor: pointer;
