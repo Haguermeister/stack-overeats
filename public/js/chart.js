@@ -100,7 +100,7 @@ function chartsetup(caloriesConsumedCurrentData, caloriesBurnedCurrentData) {
                             weight: 600
                         };
                     },
-                    text: 'Calories Burnt'
+                    text: 'Calories Burned'
                 }
             },
 
