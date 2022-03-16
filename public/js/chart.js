@@ -187,6 +187,58 @@ async function caloriesBurnedSubmitHandler(event) {
         alert(response.statusText);
     }
 }
+async function resetBurnedSubmitHandler(event) {
+    event.preventDefault();
 
+    let userId = getUserId();
+    caloriesBurnedCurrentData.amount = 0;
+
+    const response = await fetch(`/api/caloriesburned/${userId}`, {
+        method: "PUT",
+        body: JSON.stringify({
+            user_id: userId,
+            amount: caloriesBurnedCurrentData.amount
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    if (response.ok) {
+        let math = caloriesBurnedCurrentData.goal - caloriesBurnedCurrentData.amount;
+        burnedChart.data.datasets[0].data = [caloriesBurnedCurrentData.amount, math];
+        burnedChart.update();
+    }
+    else {
+        alert(response.statusText);
+    }
+}
+async function resetConsumedSubmitHandler(event) {
+    event.preventDefault();
+
+    let userId = getUserId();
+    caloriesConsumedCurrentData.amount = 0;
+
+    const response = await fetch(`/api/caloriesconsumed/${userId}`, {
+        method: "PUT",
+        body: JSON.stringify({
+            user_id: userId,
+            amount: caloriesConsumedCurrentData.amount
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    if (response.ok) {
+        let math = caloriesConsumedCurrentData.goal - caloriesConsumedCurrentData.amount;
+        consumedChart.data.datasets[0].data = [caloriesConsumedCurrentData.amount, math];
+        consumedChart.update();
+    }
+    else {
+        alert(response.statusText);
+    }
+}
+
+document.querySelector('#reset-burned').addEventListener('click', resetBurnedSubmitHandler);
+document.querySelector('#reset-consumed').addEventListener('click', resetConsumedSubmitHandler);
 document.querySelector('#burned-submit').addEventListener('click', caloriesBurnedSubmitHandler);
 document.querySelector('#consumed-submit').addEventListener('click', caloriesConsumedSubmitHandler);

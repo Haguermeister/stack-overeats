@@ -2,7 +2,7 @@
     <h1 id="home-h">Calorie and Exercise Tracking</h2>
 </section>
 <div class="d-flex flex-wrap">
-    <div class="track-div col-lg-6 col-12 d-flex align-items-center flex-column">
+    <div class="track-div col-lg-6 col-sm-12 d-flex align-items-center flex-column">
         <div class="col-12">
             <h2 class="text-center">
                 Input Calories Consumed
@@ -17,9 +17,13 @@
                 <canvas id="calorieConsumedChart"></canvas>
             </div>
         </div>
-
+        <div class="col-5">
+            <button id="reset-consumed" class="col-12 btn btn-danger">
+                Reset Progress
+            </button>
+        </div>
     </div>
-    <div class="track-div col-lg-6 col-12 d-flex align-items-center flex-column">
+    <div class="track-div col-lg-6 col-sm-12 d-flex align-items-center flex-column">
         <div class="col-12">
             <h2 class="text-center">
                 Input Calories Burned
@@ -33,6 +37,11 @@
             <div class="chart-wrap col-9 mx-auto">
                 <canvas id="calorieBurnedChart"></canvas>
             </div>
+        </div>
+        <div class="col-5">
+            <button id="reset-burned" class="col-12 btn btn-danger">
+                Reset Progress
+            </button>
         </div>
     </div>
 </div>
