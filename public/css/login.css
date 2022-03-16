@@ -107,7 +107,7 @@
     margin-bottom: 2.66666667em;
   }
   #form #contact {
-    margin-bottom: 5em;
+    margin-bottom: 1em;
   }
   #form #contact .input-group {
     display: flex;
@@ -164,7 +164,7 @@
   }
   
   #form #contact .input-group:hover .hover-box {
-    height: 3em;
+    height: 0.05em;
     border: 0.05em solid var(--primary);
     pointer-events: none;
   }

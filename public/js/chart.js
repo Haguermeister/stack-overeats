@@ -119,8 +119,8 @@ async function displayChart() {
     let userId = getUserId();
     caloriesConsumedCurrentData = await getConsumedCurrent(userId);
     caloriesBurnedCurrentData = await getBurnedCurrent(userId);
-    console.log('Calories Consumed Current', caloriesConsumedCurrentData, 'Calories Burned Current', caloriesBurnedCurrentData);
-    return chartsetup(caloriesBurnedCurrentData, caloriesConsumedCurrentData), caloriesBurnedCurrentData, caloriesConsumedCurrentData;
+    console.log('Calories Consumed Current Data', caloriesConsumedCurrentData, 'Calories Burned Current Data', caloriesBurnedCurrentData);
+    return chartsetup(caloriesConsumedCurrentData, caloriesBurnedCurrentData);
 }
 displayChart();
 
@@ -128,9 +128,7 @@ async function caloriesConsumedSubmitHandler(event) {
     event.preventDefault();
     let userId = getUserId();
     let consumed = parseInt(document.getElementById('consumedInput').value);
-    console.log(consumed);
     caloriesConsumedCurrentData.amount += consumed;
-    console.log(caloriesConsumedCurrentData.amount)
     const response = await fetch(`/api/caloriesconsumed/${userId}`, {
         method: "PUT",
         body: JSON.stringify({
@@ -161,9 +159,7 @@ async function caloriesBurnedSubmitHandler(event) {
 
     let userId = getUserId();
     let burned = parseInt(document.getElementById('burnedInput').value);
-    console.log(burned);
     caloriesBurnedCurrentData.amount += burned;
-    console.log(caloriesBurnedCurrentData.amount)
 
     const response = await fetch(`/api/caloriesburned/${userId}`, {
         method: "PUT",
