@@ -35,15 +35,15 @@ const signupFormHandler = async (event) => {
       body: JSON.stringify({ username, email, password }),
       headers: { 'Content-Type': 'application/json' },
     });
+
     if (response.ok) {
-      const userId = (await response.json()).user.id;
-      localStorage.setItem("userId", userId);
-      document.location.replace('/track');
+      document.location.replace('/');
     } else {
       alert('Failed to sign up.');
     }
   }
 };
+
 
 document
   .querySelector('#login-submit')
